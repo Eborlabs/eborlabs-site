@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ebor Labs — compliance and automation tooling</title>
+<meta name="description" content="Ebor Labs builds assessment, certification and data-readiness tools for regulated businesses in the Gulf and the UK.">
+<link rel="icon" href="assets/mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#10273F;
+    --blue:#0B79D0;
+    --paper:#F1F5F9;
+    --steel:#5B6D80;
+    --line:#D3DDE7;
+    --white:#FFFFFF;
+    --measure:66ch;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Sora",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    font-weight:300;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+  a{color:var(--blue);text-decoration:none;border-bottom:1px solid rgba(11,121,208,.35)}
+  a:hover{border-bottom-color:var(--blue)}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+
+  /* ---------- masthead ---------- */
+  header{padding:26px 0 0}
+  .masthead{display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .masthead img{height:54px;width:auto;display:block}
+  nav{display:flex;gap:26px;font-size:15px;font-weight:400}
+  nav a{color:var(--steel);border-bottom:none}
+  nav a:hover{color:var(--ink)}
+
+  /* ---------- hero ---------- */
+  .hero{padding:76px 0 20px}
+  h1{
+    font-weight:200;
+    font-size:clamp(2.2rem,5.4vw,4rem);
+    line-height:1.1;
+    letter-spacing:-.02em;
+    margin:0 0 26px;
+    max-width:17ch;
+  }
+  h1 strong{font-weight:700}
+  .standfirst{
+    font-size:clamp(1.05rem,1.7vw,1.25rem);
+    font-weight:300;
+    color:var(--steel);
+    max-width:58ch;
+    margin:0;
+  }
+
+  /* ---------- the throughput figure: the one bold idea ---------- */
+  .flow{
+    margin:60px 0 0;
+    background:var(--ink);
+    color:var(--white);
+    border-radius:3px;
+    padding:40px clamp(22px,4vw,48px) 34px;
+  }
+  .flow h2{
+    font-size:13px;font-weight:600;letter-spacing:.01em;
+    color:#8FB4D8;margin:0 0 26px;
+  }
+  .flowrow{
+    display:grid;
+    grid-template-columns:1fr 64px 1fr;
+    align-items:center;
+    gap:8px;
+    padding:20px 0;
+    border-top:1px solid rgba(255,255,255,.14);
+  }
+  .flowrow:first-of-type{border-top:none;padding-top:4px}
+  .flowrow p{margin:0;font-size:16px;line-height:1.5}
+  .flowrow .out{font-weight:600}
+  .flowrow .in{color:#A9C0D6;font-weight:200}
+  .arrow{display:block;width:100%;height:14px}
+  .arrow line{stroke:var(--blue);stroke-width:2}
+  .arrow polygon{fill:var(--blue)}
+
+  /* ---------- sections ---------- */
+  section{padding:78px 0}
+  .rule{height:1px;background:var(--line);border:none;margin:0}
+  h2.head{
+    font-weight:200;
+    font-size:clamp(1.7rem,3.4vw,2.4rem);
+    letter-spacing:-.015em;
+    margin:0 0 8px;
+  }
+  h2.head strong{font-weight:700}
+  .lede{color:var(--steel);max-width:var(--measure);margin:0 0 40px}
+
+  /* ---------- products: deliberately unequal, not a card grid ---------- */
+  .product{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1.55fr);
+    gap:clamp(20px,4vw,56px);
+    padding:36px 0;
+    border-top:1px solid var(--line);
+  }
+  .product:last-of-type{border-bottom:1px solid var(--line)}
+  .product h3{
+    font-size:1.25rem;font-weight:600;margin:0 0 6px;letter-spacing:-.01em;
+  }
+  .product .host{
+    font-size:14px;color:var(--steel);font-weight:300;margin:0;
+  }
+  .product p.body{margin:0 0 14px;max-width:var(--measure)}
+  .product ul{margin:0;padding:0;list-style:none;font-size:15.5px}
+  .product li{
+    padding:5px 0 5px 20px;position:relative;color:var(--steel);
+  }
+  .product li::before{
+    content:"";position:absolute;left:0;top:14px;
+    width:9px;height:1px;background:var(--blue);
+  }
+
+  /* ---------- principles ---------- */
+  .principles{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border-radius:3px;overflow:hidden}
+  .principle{background:var(--paper);padding:26px clamp(20px,3vw,32px)}
+  .principle h3{font-size:1.02rem;font-weight:600;margin:0 0 6px}
+  .principle p{margin:0;color:var(--steel);font-size:15.5px;max-width:60ch}
+
+  /* ---------- contact ---------- */
+  .contact{background:var(--white);border-radius:3px;padding:clamp(28px,4vw,44px)}
+  .contact p{max-width:var(--measure)}
+  .mail{font-size:clamp(1.15rem,2.6vw,1.55rem);font-weight:600;letter-spacing:-.01em}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line);padding:44px 0 60px;font-size:14.5px;color:var(--steel)}
+  .footgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:28px}
+  footer h4{font-size:13px;font-weight:600;color:var(--ink);margin:0 0 8px}
+  footer p{margin:0 0 4px}
+  .pending{
+    background:#FCF3DC;color:#6B5417;padding:1px 7px;border-radius:2px;
+    font-size:12.5px;font-weight:400;
+  }
+  .colophon{margin-top:34px;padding-top:20px;border-top:1px solid var(--line);font-size:13.5px}
+
+  @media (max-width:760px){
+    .product{grid-template-columns:1fr;gap:14px}
+    .principles{grid-template-columns:1fr}
+    .masthead img{height:42px}
+    .flowrow{grid-template-columns:1fr;gap:0;text-align:left}
+    .arrow{width:44px;height:44px;transform:rotate(90deg);transform-origin:50% 50%;margin:2px 0 2px 4px}
+    nav{gap:16px;font-size:14px}
+    .hero{padding:48px 0 10px}
+    section{padding:54px 0}
+  }
+  @media (prefers-reduced-motion:no-preference){
+    a,nav a{transition:border-color .15s ease,color .15s ease}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap masthead">
+    <img src="assets/logo.png" alt="Ebor Labs">
+    <nav>
+      <a href="#what">What we build</a>
+      <a href="#how">How we build it</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="hero">
+    <h1>Records that hold up when <strong>somebody checks</strong>.</h1>
+    <p class="standfirst">
+      Ebor Labs builds assessment, certification and data-readiness tools for
+      regulated businesses — mostly financial institutions in the Gulf, and the
+      training providers who serve them.
+    </p>
+  </div>
+
+  <div class="flow">
+    <h2>What goes in, and what comes back out</h2>
+
+    <div class="flowrow">
+      <p class="in">A room of bank staff sitting a compliance paper</p>
+      <svg class="arrow" viewBox="0 0 64 14" aria-hidden="true">
+        <line x1="0" y1="7" x2="50" y2="7"/>
+        <polygon points="50,1 64,7 50,13"/>
+      </svg>
+      <p class="out">Certificates an auditor can verify by scanning the code on them</p>
+    </div>
+
+    <div class="flowrow">
+      <p class="in">A customer master file exported from an accounting system</p>
+      <svg class="arrow" viewBox="0 0 64 14" aria-hidden="true">
+        <line x1="0" y1="7" x2="50" y2="7"/>
+        <polygon points="50,1 64,7 50,13"/>
+      </svg>
+      <p class="out">Clean records, and a list of the ones a person needs to decide about</p>
+    </div>
+
+    <div class="flowrow">
+      <p class="in">A trainer asking how the cohort actually did</p>
+      <svg class="arrow" viewBox="0 0 64 14" aria-hidden="true">
+        <line x1="0" y1="7" x2="50" y2="7"/>
+        <polygon points="50,1 64,7 50,13"/>
+      </svg>
+      <p class="out">Weak on sanctions screening — not weak on question seven</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="wrap">
+<section id="what">
+  <h2 class="head">Two things, both <strong>running today</strong></h2>
+  <p class="lede">
+    Neither is a demo. Both are live, in use, and built for the specific
+    paperwork a regulator asks for rather than for a general market.
+  </p>
+
+  <div class="product">
+    <div>
+      <h3>Assessment platform</h3>
+      <p class="host">exam.eborlabs.com</p>
+    </div>
+    <div>
+      <p class="body">
+        Candidates sit compliance papers, trainers run the room, certificates
+        issue themselves. Built for training providers who have to prove to a
+        regulator that a named person passed a named course on a named date.
+      </p>
+      <ul>
+        <li>Marking happens on the server, so the answer key never reaches the candidate's browser</li>
+        <li>Every certificate carries a QR code that verifies against the record</li>
+        <li>Pre-tests measure what the training actually moved</li>
+        <li>Reporting by subject, so you can say which topic a cohort struggled with</li>
+        <li>Renewal reminders before a certificate lapses</li>
+        <li>Arabic throughout, and extra time for People of Determination</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="product">
+    <div>
+      <h3>E-invoicing data check</h3>
+      <p class="host">einvoicecheck.eborlabs.com</p>
+    </div>
+    <div>
+      <p class="body">
+        Tools for UAE businesses getting their customer data in order before
+        connecting to an accredited service provider under the Ministry of
+        Finance e-invoicing programme.
+      </p>
+      <ul>
+        <li>Reads exports from fourteen common accounting systems</li>
+        <li>Corrects what has one right answer — spacing, labels, country codes</li>
+        <li>Sends anything needing judgement to an exception list instead of guessing</li>
+        <li>Checks invoice files against the UBL and PINT AE formats</li>
+        <li>Runs entirely in your browser; nothing is uploaded anywhere</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</div>
+
+<hr class="rule">
+
+<div class="wrap">
+<section id="how">
+  <h2 class="head">How it's <strong>built</strong></h2>
+  <p class="lede">
+    These are properties of the systems, not promises in a brochure. They are
+    the reasons a compliance team can put their staff's records into them.
+  </p>
+
+  <div class="principles">
+    <div class="principle">
+      <h3>An identity provider says who someone is, never what they may do</h3>
+      <p>
+        Signing in with a work account proves an email address. It does not
+        grant access. An unrecognised trainer becomes a request somebody has to
+        approve — never an account.
+      </p>
+    </div>
+    <div class="principle">
+      <h3>A submitted assessment cannot be re-marked</h3>
+      <p>
+        Enforced in the application and again by the database itself. A record
+        of what happened stays a record of what happened.
+      </p>
+    </div>
+    <div class="principle">
+      <h3>Deleting a record needs two people</h3>
+      <p>
+        One person asks, another approves, and the request is logged either way.
+        Nothing quietly disappears.
+      </p>
+    </div>
+    <div class="principle">
+      <h3>Separation between clients is a permission, not a naming convention</h3>
+      <p>
+        One organisation cannot reach another's records, because the check
+        happens on the server against the signed-in session — not because the
+        keys happen to look different.
+      </p>
+    </div>
+    <div class="principle">
+      <h3>Candidate data stays in the United Kingdom</h3>
+      <p>
+        Records are held in London. Email is sent from Ireland. Both are named in
+        writing, because a client's compliance team will ask.
+      </p>
+    </div>
+    <div class="principle">
+      <h3>Every change is tested before it ships</h3>
+      <p>
+        An automated suite runs against the platform before any release, and
+        every fixed bug gains a permanent test so it cannot come back unnoticed.
+      </p>
+    </div>
+  </div>
+</section>
+</div>
+
+<hr class="rule">
+
+<div class="wrap">
+<section id="contact">
+  <div class="contact">
+    <h2 class="head" style="margin-bottom:16px">Talk to <strong>a person</strong></h2>
+    <p>
+      Ebor Labs is Mohammad Ibrahim — an engineer in York, building tools for an
+      industry that has to be able to prove things. If you have a compliance
+      process held together by spreadsheets and goodwill, that is usually where
+      the interesting work is.
+    </p>
+    <p class="mail"><a href="mailto:ibrahim@eborlabs.com">ibrahim@eborlabs.com</a></p>
+  </div>
+</section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footgrid">
+      <div>
+        <h4>Ebor Labs</h4>
+        <p>Sole trader registered in England</p>
+        <p><span class="pending">Business address to follow</span></p>
+      </div>
+      <div>
+        <h4>Products</h4>
+        <p><a href="https://exam.eborlabs.com">Assessment platform</a></p>
+        <p><a href="https://einvoicecheck.eborlabs.com">E-invoicing data check</a></p>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <p><a href="privacy.html">Privacy notice</a></p>
+        <p><span class="pending">ICO registration to follow</span></p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p><a href="mailto:ibrahim@eborlabs.com">ibrahim@eborlabs.com</a></p>
+      </div>
+    </div>
+    <p class="colophon">
+      Named after Eboracum, the Roman name for York. This site sets no cookies
+      and runs no analytics.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
