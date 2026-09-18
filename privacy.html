@@ -6,10 +6,21 @@
 <title>Privacy notice — Ebor Labs</title>
 <meta name="description" content="How Ebor Labs handles personal data, as a business and on behalf of its clients.">
 <link rel="icon" href="assets/mark.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/sora-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+  /* Sora, served from this site rather than from Google, so a visit doesn't
+     send the visitor's address to anyone else. One variable file per script
+     range covers every weight used here. Licence: assets/fonts/OFL.txt */
+  @font-face{
+    font-family:"Sora";font-style:normal;font-weight:100 800;font-display:swap;
+    src:url("assets/fonts/sora-latin-ext.woff2") format("woff2");
+    unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+  }
+  @font-face{
+    font-family:"Sora";font-style:normal;font-weight:100 800;font-display:swap;
+    src:url("assets/fonts/sora-latin.woff2") format("woff2");
+    unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+  }
   :root{
     --ink:#10273F; --blue:#0B79D0; --paper:#F1F5F9;
     --steel:#5B6D80; --line:#D3DDE7; --white:#FFFFFF;
@@ -68,7 +79,7 @@
 <div class="wrap">
 
   <h1>Privacy <strong>notice</strong></h1>
-  <p class="updated">Last updated 15 September 2026</p>
+  <p class="updated">Last updated 17 September 2026</p>
 
   <div class="summary">
     <p><strong>The short version.</strong> Ebor Labs holds very little
@@ -136,9 +147,9 @@
   </ul>
   <p>
     That last point is deliberately narrow. Where a candidate is granted extra
-    time, the platform records that it was authorised. It does not record why,
-    and it is designed so that a diagnosis or medical detail cannot be stored
-    against a person.
+    time, the platform records that it was authorised and by whom, with a short
+    note. That note is not meant to hold a diagnosis or medical detail, and the
+    platform refuses a note that looks like one.
   </p>
 
   <h2>Where it is held, and by whom</h2>
@@ -164,8 +175,8 @@
     Candidate records are stored in the United Kingdom, and the servers that
     process each request to the platform run in the United Kingdom as well. Email
     in transit passes through Ireland. Where a candidate signs in with a Microsoft
-    or Google account, that provider confirms their email address to the platform
-    and nothing further is shared.
+    or Google account, that provider shares their name and email address with the
+    platform and nothing further.
   </p>
 
   <h2>The e-invoicing tools hold nothing at all</h2>
@@ -203,13 +214,26 @@
     analytics. Nobody is counting your visit.
   </p>
   <p>
-    The assessment platform sets one item in your browser to keep you signed in
-    during a session. It is necessary for the platform to work, expires, and is
-    not used to track anyone across other websites.
+    The assessment platform sets no cookies for tracking and runs no analytics.
+    It keeps a few small items in your browser, each needed for something you
+    are doing:
+  </p>
+  <ul>
+    <li>from when you open an assessment, a random reference so you can return
+    to your paper if the page closes, removed when you submit, and for a batch
+    limited to one device, a random name for that device while the page is open;</li>
+    <li>your choice of English or Arabic, if you change it;</li>
+    <li>for trainers, their sign-in, which ends when the tab is closed, and
+    their email address if they ask for it to be remembered.</li>
+  </ul>
+  <p>
+    None of them is used to track anyone across other websites.
   </p>
   <p>
-    Web fonts on this page are served by Google Fonts, which means your browser
-    requests a font file from Google and Google's servers see the request.
+    The fonts on this site and on the assessment platform are served from
+    Ebor Labs' own sites, as are the tools the platform uses to make PDFs and
+    QR codes. Loading a page does not contact Google or any other third party,
+    and the platform tells your browser to refuse anything from elsewhere.
   </p>
 
   <h2>Your rights</h2>
