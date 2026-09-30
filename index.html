@@ -184,6 +184,10 @@
   @media (prefers-reduced-motion:no-preference){
     a,nav a{transition:border-color .15s ease,color .15s ease}
   }
+  .tag{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:10px;margin-top:6px}
+  .tag.live{background:#e3f4ea;color:#1d6b3c}
+  .tag.dev{background:#eef2f6;color:#5B6D80}
+  .soon{opacity:.6}
 </style>
 </head>
 <body>
@@ -193,7 +197,6 @@
     <img src="assets/logo.png" alt="Ebor Labs">
     <nav>
       <a href="#what">What we build</a>
-      <a href="#how">How we build it</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -202,11 +205,12 @@
 <div class="wrap">
 
   <div class="hero">
-    <h1>Records that hold up when <strong>somebody checks</strong>.</h1>
+    <h1>Software for businesses that have to <strong>get it right</strong>.</h1>
     <p class="standfirst">
-      Ebor Labs builds assessment, certification and data-readiness tools for
-      regulated businesses — mostly financial institutions in the Gulf, and the
-      training providers who serve them.
+      Ebor Labs is a small software studio in York. Most of what we build is for
+      regulated work — assessment, compliance checks, data readiness and
+      construction handover — and one project is a game about the city we are
+      named after.
     </p>
   </div>
 
@@ -245,113 +249,75 @@
 
 <div class="wrap">
 <section id="what">
-  <h2 class="head">Two things, both <strong>running today</strong></h2>
+  <h2 class="head">What we <strong>build</strong></h2>
   <p class="lede">
-    Neither is a demo. Both are live, and built for the specific
-    paperwork a regulator asks for rather than for a general market.
+    Five products. Two are live today; three are still being built, and say so.
   </p>
 
   <div class="product">
     <div>
-      <h3>Assessment platform</h3>
-      <p class="host">exam.eborlabs.com</p>
+      <h3>Ebor Exam</h3>
+      <p class="host"><a href="https://exam.eborlabs.com">exam.eborlabs.com</a></p>
+      <span class="tag live">Live</span>
     </div>
     <div>
       <p class="body">
-        Candidates sit compliance papers, trainers run the room, certificates
-        issue themselves. Built for training providers who have to prove to a
-        regulator that a named person passed a named course on a named date.
+        Assessment and certification for regulated training: the paper, the room, the
+        result, and a certificate that can be checked against the record.
       </p>
-      <ul>
-        <li>Marking happens on the server, so the answer key is never sent to the candidate's browser while they sit the paper</li>
-        <li>Anyone can check a certificate against the record, by its reference or by scanning its QR code</li>
-        <li>Pre-tests measure what the training actually moved</li>
-        <li>Reporting by subject, so you can say which topic a cohort struggled with</li>
-        <li>Renewal reminders before a certificate lapses</li>
-        <li>Extra time for People of Determination, recorded as an authorisation rather than a health record; an Arabic candidate journey is built and waiting on review by a native speaker</li>
-      </ul>
     </div>
   </div>
 
   <div class="product">
     <div>
       <h3>E-invoicing data check</h3>
-      <p class="host">einvoicecheck.eborlabs.com</p>
+      <p class="host"><a href="https://einvoicecheck.eborlabs.com">einvoicecheck.eborlabs.com</a></p>
+      <span class="tag live">Live</span>
     </div>
     <div>
       <p class="body">
-        Tools for UAE businesses getting their customer data in order before
-        connecting to an accredited service provider under the Ministry of
-        Finance e-invoicing programme.
+        Gets UAE customer data ready for the Ministry of Finance e-invoicing
+        programme, and checks invoice files against UBL and PINT AE. Runs entirely
+        in your browser; nothing is uploaded.
       </p>
-      <ul>
-        <li>Reads exports from fourteen common accounting systems</li>
-        <li>Corrects what has one right answer — spacing, labels, country codes</li>
-        <li>Sends anything needing judgement to an exception list instead of guessing</li>
-        <li>Checks invoice files against the UBL and PINT AE formats</li>
-        <li>Runs entirely in your browser; nothing is uploaded anywhere</li>
-      </ul>
     </div>
   </div>
-</section>
-</div>
 
-<hr class="rule">
+  <div class="product">
+    <div>
+      <h3>Ebor</h3>
+      <span class="tag dev">In development</span>
+    </div>
+    <div>
+      <p class="body">
+        A compliance workspace for UAE businesses: six tools on one platform,
+        starting with anti-money-laundering checks and company files.
+      </p>
+    </div>
+  </div>
 
-<div class="wrap">
-<section id="how">
-  <h2 class="head">How it's <strong>built</strong></h2>
-  <p class="lede">
-    These are properties of the systems, not promises in a brochure. They are
-    the reasons a compliance team can put their staff's records into them.
-  </p>
+  <div class="product">
+    <div>
+      <h3>Ebor Works</h3>
+      <span class="tag dev">In development</span>
+    </div>
+    <div>
+      <p class="body">
+        Building inspections on a phone: snags with photos pinned to the floor plan,
+        repairs verified, and a handover folder for the client.
+      </p>
+    </div>
+  </div>
 
-  <div class="principles">
-    <div class="principle">
-      <h3>An identity provider says who someone is, never what they may do</h3>
-      <p>
-        Signing in with a work account proves an email address. It does not
-        grant access. An unrecognised trainer becomes a request somebody has to
-        approve — never an account.
-      </p>
+  <div class="product">
+    <div>
+      <h3>Echoes of York</h3>
+      <span class="tag dev">In development</span>
     </div>
-    <div class="principle">
-      <h3>A submitted assessment cannot be re-marked</h3>
-      <p>
-        Enforced in the application and again by the database itself. A record
-        of what happened stays a record of what happened.
-      </p>
-    </div>
-    <div class="principle">
-      <h3>Deleting a candidate's record needs two people</h3>
-      <p>
-        A result, its emails, feedback or an audit record is deleted only when
-        one person asks and another approves, and the request is logged either
-        way.
-      </p>
-    </div>
-    <div class="principle">
-      <h3>Separation between clients is a permission, not a naming convention</h3>
-      <p>
-        One organisation cannot reach another's records, because the check
-        happens on the server against the signed-in session — not because the
-        keys happen to look different.
-      </p>
-    </div>
-    <div class="principle">
-      <h3>Candidate data is held in the United Kingdom</h3>
-      <p>
-        Records are stored in London, and the platform's server functions run in
-        London too. Email is sent through Ireland. Every location is named
-        in writing, because a client's compliance team will ask — and because a
-        vague answer is worse than a precise one.
-      </p>
-    </div>
-    <div class="principle">
-      <h3>Every release is tested first</h3>
-      <p>
-        An automated suite runs against the platform before every release, and
-        a fixed bug gains a test that fails if it ever comes back.
+    <div>
+      <p class="body">
+        A storybook 3D game of the real city of York, to walk, cycle, balloon and
+        row through.
       </p>
     </div>
   </div>
@@ -385,8 +351,11 @@
       </div>
       <div>
         <h4>Products</h4>
-        <p><a href="https://exam.eborlabs.com">Assessment platform</a></p>
+        <p><a href="https://exam.eborlabs.com">Ebor Exam</a></p>
         <p><a href="https://einvoicecheck.eborlabs.com">E-invoicing data check</a></p>
+        <p>Ebor <span class="soon">(in development)</span></p>
+        <p>Ebor Works <span class="soon">(in development)</span></p>
+        <p>Echoes of York <span class="soon">(in development)</span></p>
       </div>
       <div>
         <h4>Legal</h4>
