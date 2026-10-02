@@ -1,378 +1,251 @@
-<!DOCTYPE html>
-<html lang="en-GB">
+<!doctype html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ebor Labs — compliance and automation tooling</title>
+<title>Ebor Labs — software for work that gets checked</title>
 <meta name="description" content="Ebor Labs builds assessment, certification and data-readiness tools for regulated businesses in the Gulf and the UK.">
 <link rel="icon" href="assets/mark.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Ebor Labs">
-<meta property="og:title" content="Ebor Labs — compliance and automation tooling">
+<meta property="og:title" content="Ebor Labs — software for work that gets checked">
 <meta property="og:description" content="Assessment, certification and data-readiness tools for regulated businesses in the Gulf and the UK.">
 <meta property="og:url" content="https://eborlabs.com/">
 <meta property="og:image" content="https://eborlabs.com/assets/logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Ebor Labs — compliance and automation tooling">
-<meta name="twitter:description" content="Assessment, certification and data-readiness tools for regulated businesses in the Gulf and the UK.">
-<meta name="twitter:image" content="https://eborlabs.com/assets/logo.png">
-<link rel="preload" href="assets/fonts/sora-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-  /* Sora, served from this site rather than from Google, so a visit doesn't
-     send the visitor's address to anyone else. One variable file per script
-     range covers every weight used here. Licence: assets/fonts/OFL.txt */
-  @font-face{
-    font-family:"Sora";font-style:normal;font-weight:100 800;font-display:swap;
-    src:url("assets/fonts/sora-latin-ext.woff2") format("woff2");
-    unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
-  }
-  @font-face{
-    font-family:"Sora";font-style:normal;font-weight:100 800;font-display:swap;
-    src:url("assets/fonts/sora-latin.woff2") format("woff2");
-    unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-  }
-  :root{
-    --ink:#10273F;
-    --blue:#0B79D0;
-    --paper:#F1F5F9;
-    --steel:#5B6D80;
-    --line:#D3DDE7;
-    --white:#FFFFFF;
-    --measure:66ch;
-  }
-  *{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%}
-  body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:"Sora",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
-    font-weight:300;
-    font-size:17px;
-    line-height:1.65;
-    -webkit-font-smoothing:antialiased;
-  }
-  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
-  a{color:var(--blue);text-decoration:none;border-bottom:1px solid rgba(11,121,208,.35)}
-  a:hover{border-bottom-color:var(--blue)}
-  a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+/* Sora, served from this site rather than from Google, so a visit doesn't
+   send the visitor's address to anyone else. Licence: assets/fonts/OFL.txt */
+@font-face{font-family:"Sora";font-style:normal;font-weight:100 800;font-display:swap;
+  src:url("assets/fonts/sora-latin-ext.woff2") format("woff2");
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Sora";font-style:normal;font-weight:100 800;font-display:swap;
+  src:url("assets/fonts/sora-latin.woff2") format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+:root{--navy:#0A223F;--blue:#056EC8;--sky:#3B9BEA;--mist:#B8CCE0;--ink:#0A223F;--body:#3D5068;--line:#DDE3EA;--wash:#EEF3F8;--ok:#1F6F5C;--okbg:#E3EDE8;--dev:#7A5E12;--devbg:#F4EEDD}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;font-family:"Sora",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-weight:300;color:var(--ink);background:#fff;line-height:1.6}
+a{color:var(--blue)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--sky);outline-offset:3px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
+strong{font-weight:700}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes drift{0%,100%{transform:translate(0,0) rotate(0)}50%{transform:translate(-18px,12px) rotate(-2deg)}}
+@keyframes strip{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes pulse{0%,100%{opacity:.55}50%{opacity:1}}
+@keyframes tick{from{stroke-dashoffset:24}to{stroke-dashoffset:0}}
 
-  /* ---------- masthead ---------- */
-  header{padding:26px 0 0}
-  .masthead{display:flex;align-items:center;justify-content:space-between;gap:20px}
-  .masthead img{height:54px;width:auto;display:block}
-  nav{display:flex;gap:26px;font-size:15px;font-weight:400}
-  nav a{color:var(--steel);border-bottom:none}
-  nav a:hover{color:var(--ink)}
+/* opening */
+.hero{position:relative;overflow:hidden;background:var(--navy);color:#fff}
+.hero .bg{position:absolute;right:-8%;top:4%;width:min(70vw,860px);opacity:.09;animation:drift 18s ease-in-out infinite;pointer-events:none}
+header{position:relative;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:26px;padding-bottom:26px}
+.brand{display:flex;align-items:center;gap:14px;color:#fff;text-decoration:none}
+.brand .mk{display:inline-flex;background:#fff;border-radius:8px;padding:6px 9px}
+.brand .mk img{height:26px;width:auto;display:block}
+.brand b{font-weight:600;font-size:18px;letter-spacing:.18em}
+nav{display:flex;gap:26px;font-size:15px;font-weight:400}
+nav a{color:#CFE3F7;text-decoration:none;padding:12px 0}
+nav a.cta{color:#fff;font-weight:600}
+.hero-in{position:relative;padding-top:clamp(40px,8vw,112px);padding-bottom:clamp(36px,6vw,64px)}
+.eyebrow{margin:0 0 22px;font-size:14px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#7FB6EA;animation:rise .7s both}
+h1{font-weight:200;font-size:clamp(2.5rem,7.6vw,6.6rem);line-height:.98;letter-spacing:-.045em;margin:0 0 30px;max-width:14ch;animation:rise .8s .1s both}
+h1 .word{font-weight:800;color:var(--sky)}
+.lede{margin:0 0 36px;font-size:clamp(1.05rem,1.7vw,1.3rem);color:var(--mist);max-width:52ch;animation:rise .8s .25s both}
+.btns{display:flex;gap:12px;flex-wrap:wrap;animation:rise .8s .4s both}
+.btn{display:inline-flex;align-items:center;min-height:50px;padding:0 26px;border-radius:6px;font-weight:600;text-decoration:none}
+.btn.solid{background:var(--sky);color:var(--navy);font-weight:700}
+.btn.line{border:1.5px solid var(--sky);color:#fff}
+.strip-wrap{position:relative;overflow:hidden;padding:0 0 56px}
+.strip{display:flex;gap:20px;width:max-content;animation:strip 40s linear infinite}
+.chip{flex:0 0 260px;height:150px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:18px;display:flex;flex-direction:column;justify-content:space-between}
+.chip-tag{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#7FB6EA}
+.chip-line{font-size:18px;font-weight:600;line-height:1.25}
+.chip-ok{display:inline-flex;align-items:center;gap:8px;font-size:13px}
+.chip-ok i{width:8px;height:8px;border-radius:50%;background:currentColor;animation:pulse 2s infinite}
+.chip-ok.ok{color:#6FE0B0}.chip-ok.warn{color:#F2C14E}
 
-  /* ---------- hero ---------- */
-  .hero{padding:76px 0 20px}
-  h1{
-    font-weight:200;
-    font-size:clamp(2.2rem,5.4vw,4rem);
-    line-height:1.1;
-    letter-spacing:-.02em;
-    margin:0 0 26px;
-    max-width:17ch;
-  }
-  h1 strong{font-weight:700}
-  .standfirst{
-    font-size:clamp(1.05rem,1.7vw,1.25rem);
-    font-weight:300;
-    color:var(--steel);
-    max-width:58ch;
-    margin:0;
-  }
+/* work */
+.sec{padding-top:clamp(56px,8vw,104px);padding-bottom:clamp(56px,8vw,104px)}
+.h2{font-weight:200;font-size:clamp(2rem,4.4vw,3.4rem);letter-spacing:-.03em;margin:0}
+.head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin:0 0 12px}
+.head p{margin:0;font-size:15px;color:#5B6D80}
+.row{display:flex;flex-wrap:wrap;gap:32px 56px;align-items:center;padding:48px 0;border-top:1px solid var(--line)}
+.row.rev{flex-wrap:wrap-reverse}
+.row > div{flex:1 1 380px;min-width:0}
+.num{font-weight:200;font-size:56px;color:var(--blue);line-height:1}
+.row h3{font-size:clamp(1.7rem,3vw,2.4rem);font-weight:700;letter-spacing:-.02em;margin:8px 0 10px}
+.row p{margin:0 0 16px;font-size:17px;color:var(--body);max-width:50ch}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.pill{font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px}
+.pill.live{color:var(--ok);background:var(--okbg)}.pill.dev{color:var(--dev);background:var(--devbg)}
+.go{font-weight:600;color:var(--blue);text-decoration:none;padding:10px 0}
+.pic{display:flex;justify-content:center}
+.cert-wrap{position:relative;width:100%;max-width:420px;padding:0 0 36px}
+.cert{background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 24px 60px rgba(10,34,63,.14);padding:26px;transform:rotate(-2deg)}
+.cert .top{display:flex;justify-content:space-between;align-items:center}
+.cert .top img{height:24px}
+.cert .top span{font-size:11px;letter-spacing:.12em;color:#5B6D80}
+.cert .small{margin:22px 0 2px;font-size:12px;color:#5B6D80}
+.cert .who{margin:0 0 4px;font-size:22px;font-weight:600}
+.cert .what{margin:0 0 18px;font-size:13px;color:var(--body)}
+.cert .bot{display:flex;justify-content:space-between;align-items:flex-end}
+.cert .ref{font-weight:600;font-size:14px;letter-spacing:.02em}
+.qr{width:62px;height:62px;display:block}
+.badge{position:absolute;right:-6px;bottom:0;display:flex;align-items:center;gap:10px;background:var(--ok);color:#fff;padding:12px 18px;border-radius:8px;box-shadow:0 12px 30px rgba(31,111,92,.3);font-weight:600;font-size:14px}
+.badge svg{stroke-dasharray:24;animation:tick 1.2s .6s both}
+.ledger{width:100%;max-width:420px;background:var(--navy);color:#fff;border-radius:12px;padding:22px;box-shadow:0 24px 60px rgba(10,34,63,.18)}
+.ledger p{margin:0 0 14px;font-size:12px;letter-spacing:.12em;color:#7FB6EA}
+.ledger div{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid rgba(255,255,255,.12);font-size:14px}
+.ledger span:first-child{color:#CFE3F7}.ledger .ok{color:#6FE0B0;font-weight:600}.ledger .warn{color:#F2C14E;font-weight:600}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px;padding:48px 0 0;border-top:1px solid var(--line)}
+.card{display:flex;flex-direction:column;gap:14px;background:#F4F7FA;border-radius:12px;padding:26px}
+.card h3{font-size:22px;font-weight:700;margin:0}
+.card h3 span{font-weight:200;color:#8DA2B8}
+.card p{margin:0;font-size:15px;color:var(--body)}
+.card .pill{align-self:flex-start}
+.art{height:120px;border-radius:8px;position:relative;overflow:hidden}
+.art i{position:absolute;animation:pulse 2.4s infinite}
+.art b{position:absolute;left:14px;bottom:12px;font-size:12px;font-weight:600;letter-spacing:.08em}
+.a1{background:#DDEBF7}.a1 b{color:var(--navy)}
+.a2{background:repeating-linear-gradient(0deg,#fff 0 23px,#E3E8EE 23px 24px),repeating-linear-gradient(90deg,#fff 0 23px,#E3E8EE 23px 24px)}.a2 b{color:#5B6D80}
+.a3{background:#3A2E5C}.a3 b{color:#fff}
 
-  /* ---------- the throughput figure: the one bold idea ---------- */
-  .flow{
-    margin:60px 0 0;
-    background:var(--ink);
-    color:var(--white);
-    border-radius:3px;
-    padding:40px clamp(22px,4vw,48px) 34px;
-  }
-  .flow h2{
-    font-size:13px;font-weight:600;letter-spacing:.01em;
-    color:#8FB4D8;margin:0 0 26px;
-  }
-  .flowrow{
-    display:grid;
-    grid-template-columns:1fr 64px 1fr;
-    align-items:center;
-    gap:8px;
-    padding:20px 0;
-    border-top:1px solid rgba(255,255,255,.14);
-  }
-  .flowrow:first-of-type{border-top:none;padding-top:4px}
-  .flowrow p{margin:0;font-size:16px;line-height:1.5}
-  .flowrow .out{font-weight:600}
-  .flowrow .in{color:#A9C0D6;font-weight:200}
-  .arrow{display:block;width:100%;height:14px}
-  .arrow line{stroke:var(--blue);stroke-width:2}
-  .arrow polygon{fill:var(--blue)}
-
-  /* ---------- sections ---------- */
-  section{padding:78px 0}
-  .rule{height:1px;background:var(--line);border:none;margin:0}
-  h2.head{
-    font-weight:200;
-    font-size:clamp(1.7rem,3.4vw,2.4rem);
-    letter-spacing:-.015em;
-    margin:0 0 8px;
-  }
-  h2.head strong{font-weight:700}
-  .lede{color:var(--steel);max-width:var(--measure);margin:0 0 40px}
-
-  /* ---------- products: deliberately unequal, not a card grid ---------- */
-  .product{
-    display:grid;
-    grid-template-columns:minmax(0,1fr) minmax(0,1.55fr);
-    gap:clamp(20px,4vw,56px);
-    padding:36px 0;
-    border-top:1px solid var(--line);
-  }
-  .product:last-of-type{border-bottom:1px solid var(--line)}
-  .product h3{
-    font-size:1.25rem;font-weight:600;margin:0 0 6px;letter-spacing:-.01em;
-  }
-  .product .host{
-    font-size:14px;color:var(--steel);font-weight:300;margin:0;
-  }
-  .product p.body{margin:0 0 14px;max-width:var(--measure)}
-  .product ul{margin:0;padding:0;list-style:none;font-size:15.5px}
-  .product li{
-    padding:5px 0 5px 20px;position:relative;color:var(--steel);
-  }
-  .product li::before{
-    content:"";position:absolute;left:0;top:14px;
-    width:9px;height:1px;background:var(--blue);
-  }
-
-  /* ---------- principles ---------- */
-  .principles{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border-radius:3px;overflow:hidden}
-  .principle{background:var(--paper);padding:26px clamp(20px,3vw,32px)}
-  .principle h3{font-size:1.02rem;font-weight:600;margin:0 0 6px}
-  .principle p{margin:0;color:var(--steel);font-size:15.5px;max-width:60ch}
-
-  /* ---------- contact ---------- */
-  .contact{background:var(--white);border-radius:3px;padding:clamp(28px,4vw,44px)}
-  .contact p{max-width:var(--measure)}
-  .mail{font-size:clamp(1.15rem,2.6vw,1.55rem);font-weight:600;letter-spacing:-.01em}
-
-  /* ---------- footer ---------- */
-  footer{border-top:1px solid var(--line);padding:44px 0 60px;font-size:14.5px;color:var(--steel)}
-  .footgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:28px}
-  footer h4{font-size:13px;font-weight:600;color:var(--ink);margin:0 0 8px}
-  footer p{margin:0 0 4px}
-  .pending{
-    background:#FCF3DC;color:#6B5417;padding:1px 7px;border-radius:2px;
-    font-size:12.5px;font-weight:400;
-  }
-  .colophon{margin-top:34px;padding-top:20px;border-top:1px solid var(--line);font-size:13.5px}
-
-  @media (max-width:760px){
-    .product{grid-template-columns:1fr;gap:14px}
-    .principles{grid-template-columns:1fr}
-    .masthead img{height:42px}
-    .flowrow{grid-template-columns:1fr;gap:0;text-align:left}
-    .arrow{width:44px;height:44px;transform:rotate(90deg);transform-origin:50% 50%;margin:2px 0 2px 4px}
-    nav{gap:16px;font-size:14px}
-    .hero{padding:48px 0 10px}
-    section{padding:54px 0}
-  }
-  @media (prefers-reduced-motion:no-preference){
-    a,nav a{transition:border-color .15s ease,color .15s ease}
-  }
-  .tag{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:10px;margin-top:6px}
-  .tag.live{background:#e3f4ea;color:#1d6b3c}
-  .tag.dev{background:#eef2f6;color:#5B6D80}
-  .soon{opacity:.6}
+/* how we build, talk */
+.how{background:var(--wash)}
+.how .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:36px;margin-top:40px}
+.how h3{font-size:22px;font-weight:700;margin:0 0 10px;padding-top:18px;border-top:3px solid var(--blue)}
+.how p{margin:0;font-size:16px;color:var(--body)}
+.talk{background:var(--navy);color:#fff}
+.talk .wrap{display:flex;flex-wrap:wrap;gap:32px;align-items:center;justify-content:space-between}
+.talk .t{flex:1 1 460px;min-width:0}
+.talk h2 strong{color:var(--sky)}
+.talk p{margin:14px 0 0;font-size:18px;color:var(--mist)}
+.talk .btn{min-height:56px;padding:0 30px;font-size:18px}
+footer .wrap{padding-top:40px;padding-bottom:56px;display:flex;flex-wrap:wrap;gap:16px 40px;justify-content:space-between;font-size:14px;color:#5B6D80}
+footer p{margin:0;max-width:62ch}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="wrap masthead">
-    <img src="assets/logo.png" alt="Ebor Labs">
-    <nav>
-      <a href="#what">What we build</a>
-      <a href="#contact">Contact</a>
-    </nav>
+<section class="hero">
+  <img class="bg" src="assets/mark.png" alt="">
+  <header class="wrap">
+    <a class="brand" href="/"><span class="mk"><img src="assets/mark.png" alt=""></span><b>EBOR LABS</b></a>
+    <nav><a href="#work">Work</a><a href="#how">How we build</a><a class="cta" href="#talk">Talk to us</a></nav>
+  </header>
+  <div class="wrap hero-in">
+    <p class="eyebrow">Software studio · York</p>
+    <h1>Software for work that gets <span class="word" id="word">checked</span>.</h1>
+    <p class="lede">We build tools for regulated work - assessment, compliance checks, data readiness and construction handover - and every one of them leaves a record somebody else can check.</p>
+    <div class="btns"><a class="btn solid" href="#work">See what we build</a><a class="btn line" href="https://exam.eborlabs.com">Try Ebor Exam</a></div>
   </div>
-</header>
-
-<div class="wrap">
-
-  <div class="hero">
-    <h1>Software for businesses that have to <strong>get it right</strong>.</h1>
-    <p class="standfirst">
-      Ebor Labs is a small software studio in York. Most of what we build is for
-      regulated work — assessment, compliance checks, data readiness and
-      construction handover — and one project is a game about the city we are
-      named after.
-    </p>
-  </div>
-
-  <div class="flow">
-    <h2>What goes in, and what comes back out</h2>
-
-    <div class="flowrow">
-      <p class="in">A room of bank staff sitting a compliance paper</p>
-      <svg class="arrow" viewBox="0 0 64 14" aria-hidden="true">
-        <line x1="0" y1="7" x2="50" y2="7"/>
-        <polygon points="50,1 64,7 50,13"/>
-      </svg>
-      <p class="out">Certificates an auditor can verify by scanning the code on them</p>
-    </div>
-
-    <div class="flowrow">
-      <p class="in">A customer master file exported from an accounting system</p>
-      <svg class="arrow" viewBox="0 0 64 14" aria-hidden="true">
-        <line x1="0" y1="7" x2="50" y2="7"/>
-        <polygon points="50,1 64,7 50,13"/>
-      </svg>
-      <p class="out">Clean records, and a list of the ones a person needs to decide about</p>
-    </div>
-
-    <div class="flowrow">
-      <p class="in">A trainer asking how the cohort actually did</p>
-      <svg class="arrow" viewBox="0 0 64 14" aria-hidden="true">
-        <line x1="0" y1="7" x2="50" y2="7"/>
-        <polygon points="50,1 64,7 50,13"/>
-      </svg>
-      <p class="out">Weak on sanctions screening — not weak on question seven</p>
+  <div class="strip-wrap" aria-label="What our tools do">
+    <div class="strip">
+        <div class="chip"><span class="chip-tag">Ebor Exam</span><span class="chip-line">Paper marked on the server</span><span class="chip-ok ok"><i></i>Result locked</span></div>
+        <div class="chip"><span class="chip-tag">Ebor Exam</span><span class="chip-line">Certificate checked by scanning it</span><span class="chip-ok ok"><i></i>Matches the record</span></div>
+        <div class="chip"><span class="chip-tag">E-invoicing</span><span class="chip-line">Customer records read in the browser</span><span class="chip-ok ok"><i></i>Ready for PINT AE</span></div>
+        <div class="chip"><span class="chip-tag">Ebor</span><span class="chip-line">Company file screened</span><span class="chip-ok warn"><i></i>One match to review</span></div>
+        <div class="chip"><span class="chip-tag">Ebor Works</span><span class="chip-line">Snag pinned to the floor plan</span><span class="chip-ok ok"><i></i>Repair verified</span></div>
+        <div class="chip" aria-hidden="true"><span class="chip-tag">Ebor Exam</span><span class="chip-line">Paper marked on the server</span><span class="chip-ok ok"><i></i>Result locked</span></div>
+        <div class="chip" aria-hidden="true"><span class="chip-tag">Ebor Exam</span><span class="chip-line">Certificate checked by scanning it</span><span class="chip-ok ok"><i></i>Matches the record</span></div>
+        <div class="chip" aria-hidden="true"><span class="chip-tag">E-invoicing</span><span class="chip-line">Customer records read in the browser</span><span class="chip-ok ok"><i></i>Ready for PINT AE</span></div>
+        <div class="chip" aria-hidden="true"><span class="chip-tag">Ebor</span><span class="chip-line">Company file screened</span><span class="chip-ok warn"><i></i>One match to review</span></div>
+        <div class="chip" aria-hidden="true"><span class="chip-tag">Ebor Works</span><span class="chip-line">Snag pinned to the floor plan</span><span class="chip-ok ok"><i></i>Repair verified</span></div>
     </div>
   </div>
+</section>
 
-</div>
+<main>
+<section id="work" class="wrap sec">
+  <div class="head"><h2 class="h2">The <strong>work</strong></h2><p>Two live · three in development, and they say so</p></div>
 
-<div class="wrap">
-<section id="what">
-  <h2 class="head">What we <strong>build</strong></h2>
-  <p class="lede">
-    Five products. Two are live today; three are still being built, and say so.
-  </p>
-
-  <div class="product">
+  <div class="row">
     <div>
+      <span class="num">01</span>
       <h3>Ebor Exam</h3>
-      <p class="host"><a href="https://exam.eborlabs.com">exam.eborlabs.com</a></p>
-      <span class="tag live">Live</span>
+      <p>Assessment and certification for regulated training. Candidates sit the paper on their own phone, the server marks it, and every certificate can be checked against the record by anyone who scans it.</p>
+      <div class="meta"><span class="pill live">Live</span><a class="go" href="https://exam.eborlabs.com">exam.eborlabs.com →</a></div>
     </div>
-    <div>
-      <p class="body">
-        Assessment and certification for regulated training: the paper, the room, the
-        result, and a certificate that can be checked against the record.
-      </p>
-    </div>
+    <div class="pic"><div class="cert-wrap">
+      <div class="cert">
+        <div class="top"><img src="assets/mark.png" alt=""><span>CERTIFICATE</span></div>
+        <p class="small">This is to certify that</p>
+        <p class="who">A. Candidate</p>
+        <p class="what">passed AML Refresher</p>
+        <div class="bot"><span class="ref">EL-ORG-0007-001</span><svg class="qr" viewBox="0 0 62 62" aria-hidden="true" fill="#0A223F"><rect x="0" y="0" width="6" height="6"/><rect x="7" y="0" width="6" height="6"/><rect x="14" y="0" width="6" height="6"/><rect x="28" y="0" width="6" height="6"/><rect x="42" y="0" width="6" height="6"/><rect x="49" y="0" width="6" height="6"/><rect x="56" y="0" width="6" height="6"/><rect x="0" y="7" width="6" height="6"/><rect x="7" y="7" width="6" height="6"/><rect x="14" y="7" width="6" height="6"/><rect x="42" y="7" width="6" height="6"/><rect x="49" y="7" width="6" height="6"/><rect x="56" y="7" width="6" height="6"/><rect x="0" y="14" width="6" height="6"/><rect x="7" y="14" width="6" height="6"/><rect x="14" y="14" width="6" height="6"/><rect x="42" y="14" width="6" height="6"/><rect x="49" y="14" width="6" height="6"/><rect x="56" y="14" width="6" height="6"/><rect x="0" y="28" width="6" height="6"/><rect x="28" y="28" width="6" height="6"/><rect x="56" y="28" width="6" height="6"/><rect x="0" y="42" width="6" height="6"/><rect x="7" y="42" width="6" height="6"/><rect x="14" y="42" width="6" height="6"/><rect x="42" y="42" width="6" height="6"/><rect x="0" y="49" width="6" height="6"/><rect x="7" y="49" width="6" height="6"/><rect x="14" y="49" width="6" height="6"/><rect x="0" y="56" width="6" height="6"/><rect x="7" y="56" width="6" height="6"/><rect x="14" y="56" width="6" height="6"/><rect x="28" y="56" width="6" height="6"/><rect x="56" y="56" width="6" height="6"/></svg></div>
+      </div>
+      <div class="badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Checked against the record</div>
+    </div></div>
   </div>
 
-  <div class="product">
+  <div class="row rev">
+    <div class="pic"><div class="ledger">
+      <p>CUSTOMER MASTER FILE · CHECKED IN YOUR BROWSER</p>
+      <div><span>Customer 0001</span><span class="ok">Ready</span></div>
+      <div><span>Customer 0002</span><span class="ok">Ready</span></div>
+      <div><span>Customer 0003</span><span class="warn">TRN missing</span></div>
+      <div><span>Customer 0004</span><span class="ok">Ready</span></div>
+      <div><span>Customer 0005</span><span class="warn">Possible duplicate</span></div>
+    </div></div>
     <div>
+      <span class="num">02</span>
       <h3>E-invoicing data check</h3>
-      <p class="host"><a href="https://einvoicecheck.eborlabs.com">einvoicecheck.eborlabs.com</a></p>
-      <span class="tag live">Live</span>
-    </div>
-    <div>
-      <p class="body">
-        Gets UAE customer data ready for the Ministry of Finance e-invoicing
-        programme, and checks invoice files against UBL and PINT AE. Runs entirely
-        in your browser; nothing is uploaded.
-      </p>
+      <p>Gets UAE customer data ready for the Ministry of Finance e-invoicing programme, and checks invoice files against UBL and PINT AE. Runs entirely in your browser; nothing is uploaded.</p>
+      <div class="meta"><span class="pill live">Live</span><a class="go" href="https://einvoicecheck.eborlabs.com">einvoicecheck.eborlabs.com →</a></div>
     </div>
   </div>
 
-  <div class="product">
-    <div>
-      <h3>Ebor</h3>
-      <span class="tag dev">In development</span>
+  <div class="cards">
+    <div class="card">
+      <div class="art a1"><i style="left:18%;top:22%;width:46px;height:46px;border-radius:50%;background:#056EC8"></i><i style="left:48%;top:38%;width:30px;height:30px;border-radius:50%;background:#3B9BEA;animation-delay:.6s"></i><i style="left:72%;top:18%;width:22px;height:22px;border-radius:50%;background:#F2C14E;animation-delay:1.2s"></i><b>AML SCREENING</b></div>
+      <h3><span>03</span> Ebor</h3><span class="pill dev">In development</span>
+      <p>A compliance workspace for UAE businesses: six tools on one platform, starting with anti-money-laundering checks and company files.</p>
     </div>
-    <div>
-      <p class="body">
-        A compliance workspace for UAE businesses: six tools on one platform,
-        starting with anti-money-laundering checks and company files.
-      </p>
+    <div class="card">
+      <div class="art a2"><i style="left:24%;top:30%;width:14px;height:14px;border-radius:50% 50% 50% 0;background:#D64545"></i><i style="left:58%;top:52%;width:14px;height:14px;border-radius:50% 50% 50% 0;background:#D64545;animation-delay:.8s"></i><i style="left:76%;top:24%;width:14px;height:14px;border-radius:50% 50% 50% 0;background:#1F6F5C;animation-delay:1.6s"></i><b>FLOOR PLAN · LEVEL 2</b></div>
+      <h3><span>04</span> Ebor Works</h3><span class="pill dev">In development</span>
+      <p>Building inspections on a phone: snags with photos pinned to the floor plan, repairs verified, and a handover folder for the client.</p>
     </div>
-  </div>
-
-  <div class="product">
-    <div>
-      <h3>Ebor Works</h3>
-      <span class="tag dev">In development</span>
-    </div>
-    <div>
-      <p class="body">
-        Building inspections on a phone: snags with photos pinned to the floor plan,
-        repairs verified, and a handover folder for the client.
-      </p>
-    </div>
-  </div>
-
-  <div class="product">
-    <div>
-      <h3>Echoes of York</h3>
-      <span class="tag dev">In development</span>
-    </div>
-    <div>
-      <p class="body">
-        A storybook 3D game of the real city of York, to walk, cycle, balloon and
-        row through.
-      </p>
+    <div class="card">
+      <div class="art a3"><i style="left:70%;top:14%;width:26px;height:26px;border-radius:50%;background:#F2C14E"></i><i style="left:20%;top:30%;width:18px;height:20px;border-radius:50% 50% 45% 45%;background:#D64545;animation-delay:.9s"></i><b>YORK · AT DUSK</b></div>
+      <h3><span>05</span> Echoes of York</h3><span class="pill dev">In development</span>
+      <p>A storybook 3D game of the real city of York, to walk, cycle, balloon and row through.</p>
     </div>
   </div>
 </section>
-</div>
 
-<hr class="rule">
-
-<div class="wrap">
-<section id="contact">
-  <div class="contact">
-    <h2 class="head" style="margin-bottom:16px">Talk to <strong>a person</strong></h2>
-    <p>
-      Ebor Labs is Mohammad Ibrahim — an engineer in York, building tools for an
-      industry that has to be able to prove things. If you have a compliance
-      process held together by spreadsheets and goodwill, that is usually where
-      the interesting work is.
-    </p>
-    <p class="mail"><a href="mailto:ibrahim@eborlabs.com">ibrahim@eborlabs.com</a></p>
+<section id="how" class="how"><div class="wrap sec">
+  <h2 class="h2">How we <strong>build</strong></h2>
+  <div class="grid">
+    <div><h3>Proof, not promises</h3><p>Everything we build leaves a record somebody else can check: who did what, when, and against which version.</p></div>
+    <div><h3>Your data stays put</h3><p>Records live in London, nothing on our pages loads from another site, and our e-invoicing tool never uploads a file at all.</p></div>
+    <div><h3>Small, and on purpose</h3><p>A small studio, so the people who build the tool are the people you talk to. Every change to Ebor Exam passes thousands of automated checks before it reaches you.</p></div>
   </div>
-</section>
-</div>
+</div></section>
+</main>
 
-<footer>
-  <div class="wrap">
-    <div class="footgrid">
-      <div>
-        <h4>Ebor Labs</h4>
-        <p>Mohammad Ibrahim, trading as Ebor Labs</p>
-        <p>Lytchett House Ltd, Unit 13<br>Freeland Park, Wareham Road<br>Lytchett Matravers<br>Poole, Dorset BH16 6FA</p>
-      </div>
-      <div>
-        <h4>Products</h4>
-        <p><a href="https://exam.eborlabs.com">Ebor Exam</a></p>
-        <p><a href="https://einvoicecheck.eborlabs.com">E-invoicing data check</a></p>
-        <p>Ebor <span class="soon">(in development)</span></p>
-        <p>Ebor Works <span class="soon">(in development)</span></p>
-        <p>Echoes of York <span class="soon">(in development)</span></p>
-      </div>
-      <div>
-        <h4>Legal</h4>
-        <p><a href="privacy.html">Privacy notice</a></p>
-        <p>ICO registration ZC248354</p>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <p><a href="mailto:ibrahim@eborlabs.com">ibrahim@eborlabs.com</a></p>
-      </div>
-    </div>
-    <p class="colophon">
-      Named after Eboracum, the Roman name for York. This site sets no cookies
-      and runs no analytics.
-    </p>
+<section id="talk" class="talk"><div class="wrap sec">
+  <div class="t">
+    <h2 class="h2">Have a process held together by <strong>spreadsheets and goodwill?</strong></h2>
+    <p>That is usually where the interesting work is. Tell us about it.</p>
   </div>
-</footer>
+  <a class="btn solid" href="mailto:exam@eborlabs.com">exam@eborlabs.com</a>
+</div></section>
 
+<footer><div class="wrap">
+  <p>Ebor Labs · Unit 13 Freeland Park, Wareham Road, Lytchett Matravers, Poole, Dorset BH16 6FA · ICO registration ZC248354</p>
+  <p><a href="privacy.html">Privacy notice</a> · No cookies, no analytics · Eboracum is the Roman name for York</p>
+</div></footer>
+
+<script>
+/* the one moving word in the headline; still for anyone who has asked for less motion */
+(function(){
+  var words = ["checked", "audited", "certified", "signed off"], i = 0, el = document.getElementById("word");
+  if (!el || (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches)) return;
+  setInterval(function(){ i = (i + 1) % words.length; el.textContent = words[i]; }, 2400);
+})();
+</script>
 </body>
 </html>
