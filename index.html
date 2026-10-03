@@ -77,6 +77,43 @@ h1 .word{font-weight:800;color:var(--sky)}
 .chip-ok i{width:8px;height:8px;border-radius:50%;background:currentColor;animation:pulse 2s infinite}
 .chip-ok.ok{color:#6FE0B0}.chip-ok.warn{color:#F2C14E}
 
+/* the menu (Mo, 2 October: "a menu drop down page with links to the various
+   pages and info and tools"). One button at every width; on a wide screen the
+   three most used links stay beside it. */
+.menu-btn{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 16px;border:1.5px solid rgba(255,255,255,.35);border-radius:999px;background:transparent;color:#fff;font:inherit;font-size:15px;font-weight:600;cursor:pointer}
+.menu-btn:hover{border-color:var(--sky)}
+.menu-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+.menu{position:fixed;inset:0;z-index:50;background:var(--navy);color:#fff;overflow-y:auto;display:none}
+.menu.open{display:block}
+.menu .wrap{padding-top:26px;padding-bottom:56px}
+.menu-top{display:flex;justify-content:space-between;align-items:center;margin:0 0 40px}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:36px}
+.menu h2{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#7FB6EA;margin:0 0 14px}
+.menu ul{list-style:none;margin:0;padding:0}
+.menu li a{display:block;padding:10px 0;color:#fff;text-decoration:none;font-size:20px;font-weight:300;border-bottom:1px solid rgba(255,255,255,.1)}
+.menu li a:hover{color:var(--sky)}
+.menu li small{display:block;font-size:13px;color:var(--mist)}
+body.menu-on{overflow:hidden}
+@media (max-width:720px){ nav .nl{display:none} }
+
+/* what we automate */
+.svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:20px;margin-top:40px}
+.svc div{border:1px solid var(--line);border-radius:12px;padding:24px;background:#fff}
+.svc h3{font-size:20px;font-weight:700;margin:0 0 8px}
+.svc p{margin:0;font-size:15px;color:var(--body)}
+.steps3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:20px;margin-top:28px;counter-reset:st}
+.steps3 div{padding-top:18px;border-top:3px solid var(--blue)}
+.steps3 h3{font-size:18px;font-weight:700;margin:0 0 6px}
+.steps3 h3::before{counter-increment:st;content:counter(st) ". ";color:var(--blue)}
+.steps3 p{margin:0;font-size:15px;color:var(--body)}
+.brit{background:var(--navy);color:#fff}
+.brit .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:32px;align-items:center}
+.brit h2 strong{color:var(--sky)}
+.brit ul{margin:0;padding:0;list-style:none}
+.brit li{padding:12px 0 12px 30px;border-top:1px solid rgba(255,255,255,.12);position:relative;color:var(--mist);font-size:16px}
+.brit li::before{content:"";position:absolute;left:0;top:19px;width:14px;height:8px;border-left:2px solid #6FE0B0;border-bottom:2px solid #6FE0B0;transform:rotate(-45deg)}
+.brit li b{color:#fff;font-weight:600}
+
 /* work */
 .sec{padding-top:clamp(56px,8vw,104px);padding-bottom:clamp(56px,8vw,104px)}
 .h2{font-weight:200;font-size:clamp(2rem,4.4vw,3.4rem);letter-spacing:-.03em;margin:0}
@@ -145,13 +182,14 @@ footer p{margin:0;max-width:62ch}
   <img class="bg" src="assets/mark.png" alt="">
   <header class="wrap">
     <a class="brand" href="/"><span class="mk"><img src="assets/mark.png" alt=""></span><b>EBOR LABS</b></a>
-    <nav><a href="#work">Work</a><a href="#how">How we build</a><a class="cta" href="#talk">Talk to us</a></nav>
+    <nav><a class="nl" href="#automate">What we automate</a><a class="nl" href="#work">Our tools</a><a class="nl cta" href="#talk">Talk to us</a>
+      <button class="menu-btn" type="button" id="menu-open" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu</button></nav>
   </header>
   <div class="wrap hero-in">
-    <p class="eyebrow">Software studio · York</p>
-    <h1>Software for work that gets <span class="word" id="word">checked</span>.</h1>
-    <p class="lede">We build tools for regulated work - assessment, compliance checks, data readiness and construction handover - and every one of them leaves a record somebody else can check.</p>
-    <div class="btns"><a class="btn solid" href="#work">See what we build</a><a class="btn line" href="https://exam.eborlabs.com">Try Ebor Exam</a></div>
+    <p class="eyebrow">Custom automation · British-built</p>
+    <h1>We automate the work that <span class="word" id="word">slows you down</span>.</h1>
+    <p class="lede">Ebor Labs designs and builds custom automations for people and businesses - the reports, checks, data and hand-offs that take hours by hand - so your team does more, faster, and gets it right every time.</p>
+    <div class="btns"><a class="btn solid" href="#talk">Talk about an automation</a><a class="btn line" href="#automate">What we automate</a></div>
   </div>
   <div class="strip-wrap">
     <div class="strip-view" tabindex="0" role="region" aria-label="What our tools do - scroll sideways, or use the buttons below">
@@ -176,9 +214,53 @@ footer p{margin:0;max-width:62ch}
   </div>
 </section>
 
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu"><div class="wrap">
+  <div class="menu-top"><a class="brand" href="/"><span class="mk"><img src="assets/mark.png" alt=""></span><b>EBOR LABS</b></a>
+    <button class="menu-btn" type="button" id="menu-close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>Close</button></div>
+  <div class="menu-grid">
+    <div><h2>Automation</h2><ul>
+      <li><a href="#automate">What we automate<small>Reports, checks, data and hand-offs</small></a></li>
+      <li><a href="#process">How it works<small>From your process to a working automation</small></a></li>
+      <li><a href="#british">British technology expertise<small>For businesses in the UK and the Gulf</small></a></li></ul></div>
+    <div><h2>Our tools</h2><ul>
+      <li><a href="https://exam.eborlabs.com">Ebor Exam<small>Assessment and certification</small></a></li>
+      <li><a href="https://einvoicecheck.eborlabs.com">E-invoicing data check<small>UAE e-invoicing readiness</small></a></li>
+      <li><a href="#work">In development<small>Ebor, Ebor Works, Echoes of York</small></a></li></ul></div>
+    <div><h2>Company</h2><ul>
+      <li><a href="#how">How we build<small>Proof, data and size</small></a></li>
+      <li><a href="#talk">Talk to us<small>exam@eborlabs.com</small></a></li>
+      <li><a href="privacy.html">Privacy notice<small>No cookies, no analytics</small></a></li></ul></div>
+  </div>
+</div></div>
+
 <main>
+<section id="automate" class="wrap sec">
+  <div class="head"><h2 class="h2">What we <strong>automate</strong></h2><p>Built for how you work, not off the shelf</p></div>
+  <div class="svc">
+    <div><h3>Reports and paperwork</h3><p>The weekly report, the monthly pack, the certificate, the letter: produced from your own records, the same way every time.</p></div>
+    <div><h3>Checks and compliance</h3><p>Rules applied the moment data arrives, with a record of every check, so nothing waits for someone to remember.</p></div>
+    <div><h3>Data between systems</h3><p>Information moved from one system to the next without copying and pasting, and checked on the way.</p></div>
+    <div><h3>Customer and staff journeys</h3><p>Sign-ups, bookings, approvals and reminders that run themselves and tell the right person when they need a human.</p></div>
+  </div>
+  <h2 id="process" class="h2" style="margin-top:72px">How it <strong>works</strong></h2>
+  <div class="steps3">
+    <div><h3>Tell us the process</h3><p>Show us how the work is done today, and where the time goes.</p></div>
+    <div><h3>We build the automation</h3><p>Shaped around your process, tested before you rely on it, and shown to you as it takes shape.</p></div>
+    <div><h3>You run it, we keep it working</h3><p>Your team gets the hours back. We look after it as your business changes.</p></div>
+  </div>
+</section>
+
+<section id="british" class="brit"><div class="wrap sec">
+  <div><h2 class="h2">British technology <strong>expertise</strong>, for the UK and the Gulf</h2></div>
+  <ul>
+    <li><b>Built in Britain</b>, by a UK business registered with the Information Commissioner's Office.</li>
+    <li><b>UK data-protection standards</b> as the starting point, not an afterthought.</li>
+    <li><b>Working with businesses in the UAE</b> today, on Gulf time when it matters.</li>
+  </ul>
+</div></section>
+
 <section id="work" class="wrap sec">
-  <div class="head"><h2 class="h2">The <strong>work</strong></h2><p>Two live · three in development, and they say so</p></div>
+  <div class="head"><h2 class="h2">Already <strong>built</strong></h2><p>Our own tools: two live, three in development, and they say so</p></div>
 
   <div class="row">
     <div>
@@ -240,7 +322,7 @@ footer p{margin:0;max-width:62ch}
   <div class="grid">
     <div><h3>Proof, not promises</h3><p>Everything we build leaves a record somebody else can check: who did what, when, and against which version.</p></div>
     <div><h3>Your data stays put</h3><p>Records live in London, nothing on our pages loads from another site, and our e-invoicing tool never uploads a file at all.</p></div>
-    <div><h3>Small, and on purpose</h3><p>A small studio, so the people who build the tool are the people you talk to. Every change to Ebor Exam passes thousands of automated checks before it reaches you.</p></div>
+    <div><h3>Small, and on purpose</h3><p>The people who build your automation are the people you talk to. Every change to Ebor Exam passes thousands of automated checks before it reaches you.</p></div>
   </div>
 </div></section>
 </main>
@@ -248,7 +330,7 @@ footer p{margin:0;max-width:62ch}
 <section id="talk" class="talk"><div class="wrap sec">
   <div class="t">
     <h2 class="h2">Have a process held together by <strong>spreadsheets and goodwill?</strong></h2>
-    <p>That is usually where the interesting work is. Tell us about it.</p>
+    <p>That is where an automation pays for itself. Tell us about it.</p>
   </div>
   <a class="btn solid" href="mailto:exam@eborlabs.com">exam@eborlabs.com</a>
 </div></section>
@@ -261,7 +343,7 @@ footer p{margin:0;max-width:62ch}
 <script>
 /* the one moving word in the headline; still for anyone who has asked for less motion */
 (function(){
-  var words = ["checked", "audited", "certified", "signed off"], i = 0, el = document.getElementById("word");
+  var words = ["slows you down", "eats your week", "lives in spreadsheets", "needs checking"], i = 0, el = document.getElementById("word");
   if (!el || (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches)) return;
   setInterval(function(){ i = (i + 1) % words.length; el.textContent = words[i]; }, 2400);
 })();
@@ -320,6 +402,18 @@ footer p{margin:0;max-width:62ch}
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
+})();
+
+/* the menu: opens over the page, closes on Close, Escape or any link in it, and
+   gives the keyboard back where it was */
+(function(){
+  var menu = document.getElementById("menu"), open = document.getElementById("menu-open"), close = document.getElementById("menu-close");
+  if (!menu || !open || !close) return;
+  var shut = function(){ menu.classList.remove("open"); document.body.classList.remove("menu-on"); open.setAttribute("aria-expanded", "false"); open.focus(); };
+  open.addEventListener("click", function(){ menu.classList.add("open"); document.body.classList.add("menu-on"); open.setAttribute("aria-expanded", "true"); close.focus(); });
+  close.addEventListener("click", shut);
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape" && menu.classList.contains("open")) shut(); });
+  menu.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", function(){ menu.classList.remove("open"); document.body.classList.remove("menu-on"); open.setAttribute("aria-expanded", "false"); }); });
 })();
 </script>
 </body>
