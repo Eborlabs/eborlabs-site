@@ -206,21 +206,32 @@
   <p>
     Ebor Labs uses a small number of suppliers to run the platform. These are
     its sub-processors, and they are named here because a client's compliance
-    team will reasonably want to know. Two of them, Netlify and Cloudflare, are
-    United States companies. Candidate data is stored and processed in the United
-    Kingdom, but their staff can reach the systems it sits on in order to support
-    them, which counts as a transfer under UK data protection law. Both are
-    certified under the UK Extension to the EU–US Data Privacy Framework, which
-    is the basis on which that is done.
+    team will reasonably want to know.
+    <!-- Mo approved, 6 October 2026: promise corrections item 2 (one supplier
+         list and one transfer sentence, the same in the platform's terms and
+         notice). Cloudflare carries DNS only: measured 6 October, the platform's
+         responses come from Netlify with no cf-ray header -->
+    Supabase, Netlify, Resend, Anthropic and Cloudflare are United States
+    companies, and Microsoft's parent company is too. Records are stored in the
+    United Kingdom, but their staff can reach the systems they sit on in order to
+    support them, which counts as a transfer under UK data protection law. Each
+    transfer relies on the supplier's certification under the UK Extension to the
+    EU–US Data Privacy Framework or, where a supplier is not certified, on the
+    UK's standard contract terms for international transfers.
   </p>
   <table>
     <tr><th>Supplier</th><th>What it does</th><th>Where</th></tr>
     <tr><td>Supabase</td><td>Database — every candidate record</td><td>London, United Kingdom</td></tr>
     <tr><td>Netlify</td><td>Hosting, and the servers that handle every request</td><td>London, United Kingdom; pages delivered worldwide</td></tr>
     <tr><td>Resend</td><td>Certificates, invitations, verification codes, reminders</td><td>Ireland</td></tr>
-    <tr><td>Cloudflare</td><td>Domain name service and registrar</td><td>Worldwide</td></tr>
     <tr><td>Microsoft 365</td><td>Business mailbox</td><td>United Kingdom and European Union</td></tr>
+    <tr><td>Anthropic</td><td>The study assistant, only where a training provider switches it on: the question typed, never the name or email</td><td>United States</td></tr>
   </table>
+  <p>
+    Not sub-processors: Cloudflare (our domain name records; it holds no
+    records), Stripe (takes our clients' payments, as a separate company), and
+    Microsoft and Google when someone chooses to sign in with them.
+  </p>
   <p>
     Candidate records are stored in the United Kingdom, and the servers that
     process each request to the platform run in the United Kingdom as well. Email
@@ -366,7 +377,8 @@
 
 <footer>
   <div class="wrap">
-    <p>Ebor Labs · <a href="index.html">eborlabs.com</a></p>
+    <!-- Mo approved, 6 October 2026: promise corrections item 6, the registered office as Companies House shows it -->
+    <p>Ebor Labs Ltd · Registered in England and Wales, company number 17500836 · Registered office: Unit 13 Freeland Park Wareham Road, Lytchett Matravers, Poole, England, BH16 6FA · <a href="index.html">eborlabs.com</a></p>
   </div>
 </footer>
 
