@@ -39,6 +39,17 @@ strong{font-weight:700}
 /* opening */
 .hero{position:relative;overflow:hidden;background:var(--navy);color:#fff}
 .hero .bg{position:absolute;right:-8%;top:4%;width:min(70vw,860px);opacity:.09;animation:drift 18s ease-in-out infinite;pointer-events:none}
+/* wide screens (1000px and up): a still rendered medallion in place of the drifting mark.
+   Below 1000px the disc would sit behind the paragraph and buttons, so phones and
+   tablets keep the opening as it was.
+   A CSS background, so it is decorative and a phone never downloads it; placed
+   so the disc begins right of the headline's longest line, nothing behind words.
+   Approved by Mo, 6 October 2026 (blender-visuals 4 and 6: no animation). */
+@media (min-width:1000px){
+  .hero .bg{display:none}
+  .hero{background:var(--navy) url(assets/hero-medallion.jpg) no-repeat right -470px top 40px / auto 760px;
+    background-image:image-set(url(assets/hero-medallion.webp) type("image/webp"),url(assets/hero-medallion.jpg) type("image/jpeg"))}
+}
 header{position:relative;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:26px;padding-bottom:26px}
 .brand{display:flex;align-items:center;gap:14px;color:#fff;text-decoration:none}
 .brand .mk{display:inline-flex;background:#fff;border-radius:8px;padding:6px 9px}
@@ -130,19 +141,13 @@ body.menu-on{overflow:hidden}
 .pill.live{color:var(--ok);background:var(--okbg)}.pill.dev{color:var(--dev);background:var(--devbg)}
 .go{font-weight:600;color:var(--blue);text-decoration:none;padding:10px 0}
 .pic{display:flex;justify-content:center}
-.cert-wrap{position:relative;width:100%;max-width:420px;padding:0 0 36px}
-.cert{background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 24px 60px rgba(10,34,63,.14);padding:26px;transform:rotate(-2deg)}
-.cert .top{display:flex;justify-content:space-between;align-items:center}
-.cert .top img{height:24px}
-.cert .top span{font-size:11px;letter-spacing:.12em;color:#5B6D80}
-.cert .small{margin:22px 0 2px;font-size:12px;color:#5B6D80}
-.cert .who{margin:0 0 4px;font-size:22px;font-weight:600}
-.cert .what{margin:0 0 18px;font-size:13px;color:var(--body)}
-.cert .bot{display:flex;justify-content:space-between;align-items:flex-end}
-.cert .ref{font-weight:600;font-size:14px;letter-spacing:.02em}
-.qr{width:62px;height:62px;display:block}
+.cert-wrap{position:relative;width:100%;max-width:520px}
+.cert-pic{display:block;width:100%;height:auto}
 .badge{position:absolute;right:-6px;bottom:0;display:flex;align-items:center;gap:10px;background:var(--ok);color:#fff;padding:12px 18px;border-radius:8px;box-shadow:0 12px 30px rgba(31,111,92,.3);font-weight:600;font-size:14px}
 .badge svg{stroke-dasharray:24;animation:tick 1.2s .6s both}
+.cert-wrap .badge{right:0;bottom:34px}
+/* on a phone the tag would cover the seal: it sits under the picture instead */
+@media (max-width:720px){.cert-wrap .badge{position:relative;right:auto;bottom:auto;width:max-content;max-width:100%;margin:-12px 0 0 auto}}
 .ledger{width:100%;max-width:420px;background:var(--navy);color:#fff;border-radius:12px;padding:22px;box-shadow:0 24px 60px rgba(10,34,63,.18)}
 .ledger p{margin:0 0 14px;font-size:12px;letter-spacing:.12em;color:#7FB6EA}
 .ledger div{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid rgba(255,255,255,.12);font-size:14px}
@@ -270,13 +275,7 @@ footer p{margin:0;max-width:62ch}
       <div class="meta"><span class="pill live">Live</span><a class="go" href="https://exam.eborlabs.com">exam.eborlabs.com →</a></div>
     </div>
     <div class="pic"><div class="cert-wrap">
-      <div class="cert">
-        <div class="top"><img src="assets/mark.png" alt=""><span>CERTIFICATE</span></div>
-        <p class="small">This is to certify that</p>
-        <p class="who">A. Candidate</p>
-        <p class="what">passed AML Refresher</p>
-        <div class="bot"><span class="ref">EL-ORG-0007-001</span><svg class="qr" viewBox="0 0 62 62" aria-hidden="true" fill="#0A223F"><rect x="0" y="0" width="6" height="6"/><rect x="7" y="0" width="6" height="6"/><rect x="14" y="0" width="6" height="6"/><rect x="28" y="0" width="6" height="6"/><rect x="42" y="0" width="6" height="6"/><rect x="49" y="0" width="6" height="6"/><rect x="56" y="0" width="6" height="6"/><rect x="0" y="7" width="6" height="6"/><rect x="7" y="7" width="6" height="6"/><rect x="14" y="7" width="6" height="6"/><rect x="42" y="7" width="6" height="6"/><rect x="49" y="7" width="6" height="6"/><rect x="56" y="7" width="6" height="6"/><rect x="0" y="14" width="6" height="6"/><rect x="7" y="14" width="6" height="6"/><rect x="14" y="14" width="6" height="6"/><rect x="42" y="14" width="6" height="6"/><rect x="49" y="14" width="6" height="6"/><rect x="56" y="14" width="6" height="6"/><rect x="0" y="28" width="6" height="6"/><rect x="28" y="28" width="6" height="6"/><rect x="56" y="28" width="6" height="6"/><rect x="0" y="42" width="6" height="6"/><rect x="7" y="42" width="6" height="6"/><rect x="14" y="42" width="6" height="6"/><rect x="42" y="42" width="6" height="6"/><rect x="0" y="49" width="6" height="6"/><rect x="7" y="49" width="6" height="6"/><rect x="14" y="49" width="6" height="6"/><rect x="0" y="56" width="6" height="6"/><rect x="7" y="56" width="6" height="6"/><rect x="14" y="56" width="6" height="6"/><rect x="28" y="56" width="6" height="6"/><rect x="56" y="56" width="6" height="6"/></svg></div>
-      </div>
+      <picture><source srcset="assets/exam-certificate.webp" type="image/webp"><img class="cert-pic" src="assets/exam-certificate.jpg" alt="An example certificate issued through Ebor Exam" width="960" height="783" loading="lazy"></picture>
       <div class="badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Checked against the record</div>
     </div></div>
   </div>
