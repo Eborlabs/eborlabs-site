@@ -141,13 +141,6 @@ body.menu-on{overflow:hidden}
 .pill.live{color:var(--ok);background:var(--okbg)}.pill.dev{color:var(--dev);background:var(--devbg)}
 .go{font-weight:600;color:var(--blue);text-decoration:none;padding:10px 0}
 .pic{display:flex;justify-content:center}
-.cert-wrap{position:relative;width:100%;max-width:520px}
-.cert-pic{display:block;width:100%;height:auto}
-.badge{position:absolute;right:-6px;bottom:0;display:flex;align-items:center;gap:10px;background:var(--ok);color:#fff;padding:12px 18px;border-radius:8px;box-shadow:0 12px 30px rgba(31,111,92,.3);font-weight:600;font-size:14px}
-.badge svg{stroke-dasharray:24;animation:tick 1.2s .6s both}
-.cert-wrap .badge{right:0;bottom:34px}
-/* on a phone the tag would cover the seal: it sits under the picture instead */
-@media (max-width:720px){.cert-wrap .badge{position:relative;right:auto;bottom:auto;width:max-content;max-width:100%;margin:-12px 0 0 auto}}
 .ledger{width:100%;max-width:420px;background:var(--navy);color:#fff;border-radius:12px;padding:22px;box-shadow:0 24px 60px rgba(10,34,63,.18)}
 .ledger p{margin:0 0 14px;font-size:12px;letter-spacing:.12em;color:#7FB6EA}
 .ledger div{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid rgba(255,255,255,.12);font-size:14px}
@@ -178,6 +171,18 @@ body.menu-on{overflow:hidden}
 .talk .btn{min-height:56px;padding:0 30px;font-size:18px}
 footer .wrap{padding-top:40px;padding-bottom:56px;display:flex;flex-wrap:wrap;gap:16px 40px;justify-content:space-between;font-size:14px;color:#5B6D80}
 footer p{margin:0;max-width:62ch}
+/* Ebor Exam's films (Mo approved, 11 October 2026: "reel and clips: words approve ... eborlabs.com first; no music").
+   Separate files under assets/video, nothing fetched until someone presses play (preload="none"), muted, never autoplay.
+   The reel is the tall cut on a phone and the wide cut elsewhere, in the Ebor Exam row where the certificate
+   picture was (Mo, 11 October: "reel inside the Ebor Exam row; clips as drawn; lighter versions"); the clips sit
+   under the row. The certificate picture's file is kept in assets. */
+.row > .films{flex:1 1 100%}
+.reel{display:block;width:100%;max-width:640px;height:auto;margin:0 auto;border-radius:12px;background:var(--navy)}
+@media (max-width:720px){.reel{width:auto;max-width:100%;max-height:78vh;aspect-ratio:9/16}}
+.clips{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:20px;margin-top:28px}
+.clips figure{margin:0}
+.clips video{display:block;width:100%;height:auto;aspect-ratio:16/9;border-radius:8px;background:var(--wash)}
+.clips figcaption{margin-top:8px;font-size:15px;color:var(--body)}
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -274,10 +279,22 @@ footer p{margin:0;max-width:62ch}
       <p>Any exam or assessment, marked and certified. Candidates sit it on a laptop, tablet or phone, the server marks it, and every certificate can be checked against the record by anyone who scans it.</p>
       <div class="meta"><span class="pill live">Live</span><a class="go" href="https://exam.eborlabs.com">exam.eborlabs.com →</a></div>
     </div>
-    <div class="pic"><div class="cert-wrap">
-      <picture><source srcset="assets/exam-certificate.webp" type="image/webp"><img class="cert-pic" src="assets/exam-certificate.jpg" alt="An example certificate issued through Ebor Exam" width="960" height="783" loading="lazy"></picture>
-      <div class="badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Checked against the record</div>
-    </div></div>
+    <div class="pic">
+      <video class="reel" id="reel" controls muted playsinline preload="none" width="1280" height="720" poster="assets/video/exam-reel-16x9.webp" aria-label="Ebor Exam">
+        <source src="assets/video/exam-reel-16x9.mp4" type="video/mp4" media="(min-width: 721px)">
+        <source src="assets/video/exam-reel-9x16.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="films clips">
+      <figure><video controls muted playsinline preload="none" width="960" height="540" poster="assets/video/exam-setup.webp" src="assets/video/exam-setup.mp4" aria-label="Set up an assessment in four steps."></video>
+        <figcaption>Set up an assessment in four steps.</figcaption></figure>
+      <figure><video controls muted playsinline preload="none" width="960" height="540" poster="assets/video/exam-any-device.webp" src="assets/video/exam-any-device.mp4" aria-label="Candidates sit it on a laptop, tablet or phone."></video>
+        <figcaption>Candidates sit it on a laptop, tablet or phone.</figcaption></figure>
+      <figure><video controls muted playsinline preload="none" width="960" height="540" poster="assets/video/exam-certificate.webp" src="assets/video/exam-certificate.mp4" aria-label="A certificate anyone can check."></video>
+        <figcaption>A certificate anyone can check.</figcaption></figure>
+      <figure><video controls muted playsinline preload="none" width="960" height="540" poster="assets/video/exam-renewals.webp" src="assets/video/exam-renewals.mp4" aria-label="Renewals."></video>
+        <figcaption>Renewals.</figcaption></figure>
+    </div>
   </div>
 
   <div class="row rev">
@@ -402,6 +419,15 @@ footer p{margin:0;max-width:62ch}
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
+})();
+
+/* the reel: on a phone it plays the tall cut (the second source), so its picture before
+   playing is the tall one too. Without this the wide picture shows; nothing breaks. */
+(function(){
+  var v = document.getElementById("reel");
+  if (v && window.matchMedia && !matchMedia("(min-width: 721px)").matches) {
+    v.poster = "assets/video/exam-reel-9x16.webp"; v.width = 720; v.height = 1280;
+  }
 })();
 
 /* the menu: opens over the page, closes on Close, Escape or any link in it, and
