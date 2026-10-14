@@ -50,7 +50,7 @@ strong{font-weight:700}
   .hero{background:var(--navy) url(assets/hero-medallion.jpg) no-repeat right -470px top 40px / auto 760px;
     background-image:image-set(url(assets/hero-medallion.webp) type("image/webp"),url(assets/hero-medallion.jpg) type("image/jpeg"))}
 }
-header{position:relative;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:26px;padding-bottom:26px}
+header.wrap,header{position:relative;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:26px;padding-bottom:26px}
 .brand{display:flex;align-items:center;gap:14px;color:#fff;text-decoration:none}
 .brand .mk{display:inline-flex;background:#fff;border-radius:8px;padding:6px 9px}
 .brand .mk img{height:26px;width:auto;display:block}
@@ -117,13 +117,6 @@ body.menu-on{overflow:hidden}
 .steps3 h3{font-size:18px;font-weight:700;margin:0 0 6px}
 .steps3 h3::before{counter-increment:st;content:counter(st) ". ";color:var(--blue)}
 .steps3 p{margin:0;font-size:15px;color:var(--body)}
-.brit{background:var(--navy);color:#fff}
-.brit .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:32px;align-items:center}
-.brit h2 strong{color:var(--sky)}
-.brit ul{margin:0;padding:0;list-style:none}
-.brit li{padding:12px 0 12px 30px;border-top:1px solid rgba(255,255,255,.12);position:relative;color:var(--mist);font-size:16px}
-.brit li::before{content:"";position:absolute;left:0;top:19px;width:14px;height:8px;border-left:2px solid #6FE0B0;border-bottom:2px solid #6FE0B0;transform:rotate(-45deg)}
-.brit li b{color:#fff;font-weight:600}
 
 /* work */
 .sec{padding-top:clamp(56px,8vw,104px);padding-bottom:clamp(56px,8vw,104px)}
@@ -196,7 +189,7 @@ footer p{margin:0;max-width:62ch}
       <button class="menu-btn" type="button" id="menu-open" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu</button></nav>
   </header>
   <div class="wrap hero-in">
-    <p class="eyebrow">Custom automation · British-built</p>
+    <p class="eyebrow">Custom automation</p>
     <h1>We automate the work that <span class="word" id="word">slows you down</span>.</h1>
     <p class="lede">Ebor Labs designs and builds custom automations for people and businesses - the reports, checks, data and hand-offs that take hours by hand - so your team does more, faster, and gets it right every time.</p>
     <div class="btns"><a class="btn solid" href="#talk">Talk about an automation</a><a class="btn line" href="#automate">What we automate</a></div>
@@ -230,15 +223,14 @@ footer p{margin:0;max-width:62ch}
   <div class="menu-grid">
     <div><h2>Automation</h2><ul>
       <li><a href="#automate">What we automate<small>Reports, checks, data and hand-offs</small></a></li>
-      <li><a href="#process">How it works<small>From your process to a working automation</small></a></li>
-      <li><a href="#british">British technology expertise<small>For businesses in the UK and the Gulf</small></a></li></ul></div>
+      <li><a href="#process">How it works<small>From your process to a working automation</small></a></li></ul></div>
     <div><h2>Our tools</h2><ul>
       <li><a href="https://exam.eborlabs.com">Ebor Exam<small>Assessment and certification</small></a></li>
       <li><a href="https://einvoicecheck.eborlabs.com">E-invoicing data check<small>UAE e-invoicing readiness</small></a></li>
       <li><a href="#work">In development<small>Ebor, Ebor Works, Echoes of York</small></a></li></ul></div>
     <div><h2>Company</h2><ul>
       <li><a href="#how">How we build<small>Proof, data and size</small></a></li>
-      <li><a href="#talk">Talk to us<small>exam@eborlabs.com</small></a></li>
+      <li><a href="#talk">Talk to us<small>ibrahim@eborlabs.com</small></a></li>
       <li><a href="privacy.html">Privacy notice<small>No cookies, no analytics</small></a></li></ul></div>
   </div>
 </div></div>
@@ -260,14 +252,6 @@ footer p{margin:0;max-width:62ch}
   </div>
 </section>
 
-<section id="british" class="brit"><div class="wrap sec">
-  <div><h2 class="h2">British technology <strong>expertise</strong>, for the UK and the Gulf</h2></div>
-  <ul>
-    <li><b>Built in Britain</b>, by a UK business registered with the Information Commissioner's Office.</li>
-    <li><b>UK data-protection standards</b> as the starting point, not an afterthought.</li>
-    <li><b>Working with businesses in the UAE</b> today, on Gulf time when it matters.</li>
-  </ul>
-</div></section>
 
 <section id="work" class="wrap sec">
   <div class="head"><h2 class="h2">Already <strong>built</strong></h2><p>Our own tools: two live, three in development, and they say so</p></div>
@@ -348,7 +332,7 @@ footer p{margin:0;max-width:62ch}
     <h2 class="h2">Have a process held together by <strong>spreadsheets and goodwill?</strong></h2>
     <p>That is where an automation pays for itself. Tell us about it.</p>
   </div>
-  <a class="btn solid" href="mailto:exam@eborlabs.com">exam@eborlabs.com</a>
+  <a class="btn solid" href="mailto:ibrahim@eborlabs.com">ibrahim@eborlabs.com</a>
 </div></section>
 
 <footer><div class="wrap">
