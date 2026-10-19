@@ -131,7 +131,8 @@ body.menu-on{overflow:hidden}
 .row p{margin:0 0 16px;font-size:17px;color:var(--body);max-width:50ch}
 .meta{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .pill{font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px}
-.pill.live{color:var(--ok);background:var(--okbg)}.pill.dev{color:var(--dev);background:var(--devbg)}
+.pill.live{color:var(--ok);background:var(--okbg)}.pill.dev{color:var(--dev);background:var(--devbg)}.pill.priv{color:#4A3F8F;background:#ECEAF7}
+.lc{width:100%;max-width:340px;height:auto}
 .go{font-weight:600;color:var(--blue);text-decoration:none;padding:10px 0}
 .pic{display:flex;justify-content:center}
 .ledger{width:100%;max-width:420px;background:var(--navy);color:#fff;border-radius:12px;padding:22px;box-shadow:0 24px 60px rgba(10,34,63,.18)}
@@ -227,6 +228,7 @@ footer p{margin:0;max-width:62ch}
     <div><h2>Our tools</h2><ul>
       <li><a href="https://exam.eborlabs.com">Ebor Exam<small>Assessment and certification</small></a></li>
       <li><a href="https://einvoicecheck.eborlabs.com">E-invoicing data check<small>UAE e-invoicing readiness</small></a></li>
+      <li><a href="little-cat.html">Little Cat<small>A care diary for little ones</small></a></li>
       <li><a href="#work">In development<small>Ebor, Ebor Works, Echoes of York</small></a></li></ul></div>
     <div><h2>Company</h2><ul>
       <li><a href="#how">How we build<small>Proof, data and size</small></a></li>
@@ -254,7 +256,7 @@ footer p{margin:0;max-width:62ch}
 
 
 <section id="work" class="wrap sec">
-  <div class="head"><h2 class="h2">Already <strong>built</strong></h2><p>Our own tools: two live, three in development, and they say so</p></div>
+  <div class="head"><h2 class="h2">Already <strong>built</strong></h2><p>Our own tools: two live, one in private use, three in development, and they say so</p></div>
 
   <div class="row">
     <div>
@@ -298,20 +300,30 @@ footer p{margin:0;max-width:62ch}
     </div>
   </div>
 
+  <div class="row">
+    <div>
+      <span class="num">03</span>
+      <h3>Little Cat</h3>
+      <p>A gentle care diary for little ones: seizures, sleep, feeds and medicines, shared between everyone who looks after a baby or young child, especially a child with epilepsy. Health advice from the NHS, with sources.</p>
+      <div class="meta"><span class="pill priv">In private use</span><a class="go" href="little-cat.html">About Little Cat →</a></div>
+    </div>
+    <div class="pic"><picture><source srcset="assets/littlecat/cat.webp" type="image/webp"><img class="lc" src="assets/littlecat/cat.png" alt="Little Cat's mascot: a sleepy purple clay cat" width="632" height="588" loading="lazy"></picture></div>
+  </div>
+
   <div class="cards">
     <div class="card">
       <div class="art a1"><i style="left:18%;top:22%;width:46px;height:46px;border-radius:50%;background:#056EC8"></i><i style="left:48%;top:38%;width:30px;height:30px;border-radius:50%;background:#3B9BEA;animation-delay:.6s"></i><i style="left:72%;top:18%;width:22px;height:22px;border-radius:50%;background:#F2C14E;animation-delay:1.2s"></i><b>AML SCREENING</b></div>
-      <h3><span>03</span> Ebor</h3><span class="pill dev">In development</span>
+      <h3><span>04</span> Ebor</h3><span class="pill dev">In development</span>
       <p>A compliance workspace for UAE businesses: six tools on one platform, starting with anti-money-laundering checks and company files.</p>
     </div>
     <div class="card">
       <div class="art a2"><i style="left:24%;top:30%;width:14px;height:14px;border-radius:50% 50% 50% 0;background:#D64545"></i><i style="left:58%;top:52%;width:14px;height:14px;border-radius:50% 50% 50% 0;background:#D64545;animation-delay:.8s"></i><i style="left:76%;top:24%;width:14px;height:14px;border-radius:50% 50% 50% 0;background:#1F6F5C;animation-delay:1.6s"></i><b>FLOOR PLAN · LEVEL 2</b></div>
-      <h3><span>04</span> Ebor Works</h3><span class="pill dev">In development</span>
+      <h3><span>05</span> Ebor Works</h3><span class="pill dev">In development</span>
       <p>Building inspections on a phone: snags with photos pinned to the floor plan, repairs verified, and a handover folder for the client.</p>
     </div>
     <div class="card">
       <div class="art a3"><i style="left:70%;top:14%;width:26px;height:26px;border-radius:50%;background:#F2C14E"></i><i style="left:20%;top:30%;width:18px;height:20px;border-radius:50% 50% 45% 45%;background:#D64545;animation-delay:.9s"></i><b>YORK · AT DUSK</b></div>
-      <h3><span>05</span> Echoes of York</h3><span class="pill dev">In development</span>
+      <h3><span>06</span> Echoes of York</h3><span class="pill dev">In development</span>
       <p>A storybook 3D game of the real city of York, to walk, cycle, balloon and row through.</p>
     </div>
   </div>
