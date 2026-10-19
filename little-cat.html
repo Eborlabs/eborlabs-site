@@ -17,7 +17,9 @@
 /* Little Cat's page (Mo, 19 October 2026: "a page on eborlabs.com"; call to
    action "register interest by email"; "AI help, not the opinion"). Opened to the public the
    same day (Mo's decision, through the Little Cat session): "Start your diary",
-   with the email kept for questions, and the app's own loop and tour. In the Ebor
+   with the email kept for questions, and the app's own loop; the narrated tour
+   waits for a re-cut ("tour later": its chapter 8 shows the paid AI letter-reading
+   as standard). AI help is a paid option, asked for by email. In the Ebor
    Labs style, so the same fonts, colours and pieces as index.html; Little Cat's
    own purple appears only in its picture. Wording held to the Little Cat brief
    (ChotiBilli docs/handoff-website.md): a care diary, never a medical device,
@@ -63,10 +65,6 @@ h1 strong{font-weight:800;color:var(--sky)}
 .hero-pic{flex:0 1 380px;margin:0 auto;text-align:center}
 .hero-pic .tile{display:block;width:100%;max-width:380px;margin:0 auto;aspect-ratio:1;border-radius:28px;background:#F2F3F7;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.35)}
 .hero-pic video{display:block;width:100%;height:100%;object-fit:cover}
-.tour{display:flex;flex-wrap:wrap;gap:32px 56px;align-items:center}
-.tour .t{flex:1 1 380px;min-width:0}
-.tour p{margin:16px 0 0;font-size:17px;color:var(--body);max-width:50ch}
-.tour video{display:block;flex:0 1 420px;width:100%;max-width:420px;height:auto;aspect-ratio:4/5;margin:0 auto;border-radius:16px;background:#F2F3F7}
 .talk .bt{display:flex;flex-wrap:wrap;gap:12px}
 
 .sec{padding-top:clamp(56px,8vw,104px);padding-bottom:clamp(56px,8vw,104px)}
@@ -112,7 +110,7 @@ footer p{margin:0;max-width:62ch}
       <p class="eyebrow"><img src="assets/littlecat/icon-192.png" alt="" width="40" height="40">Little Cat</p>
       <h1>A gentle care diary for <strong>little ones</strong>.</h1>
       <p class="lede">Seizures, sleep, feeds and medicines, shared between everyone who looks after a baby or young child, especially a child with epilepsy. Whatever one carer logs shows on the others' phones in seconds.</p>
-      <div class="btns"><a class="btn solid" href="https://littlecat.eborlabs.com">Start your diary</a><a class="btn line" href="#tour">Watch the tour</a></div>
+      <div class="btns"><a class="btn solid" href="https://littlecat.eborlabs.com">Start your diary</a><a class="btn line" href="#what">What it does</a></div>
       <p class="status">It installs from your browser: "Add to Home Screen" on iPhone, "Install app" on Android. No app store needed.</p>
     </div>
     <div class="hero-pic">
@@ -147,14 +145,6 @@ footer p{margin:0;max-width:62ch}
       <li>Roles for a parent, a carer, view-only, and a nursery or childminder, who sees the last 24 hours and the emergency details only.</li></ul></div>
   </div>
 </section>
-
-<section id="tour" class="wrap sec" style="padding-top:0"><div class="tour">
-  <div class="t">
-    <h2 class="h2">Watch the <strong>tour</strong></h2>
-    <p>Two and a half minutes, narrated: one diary on every phone, what happens when a seizure starts, everyday logging, medicines, and what to take to the doctor. Recorded with made-up details, never a real family's.</p>
-  </div>
-  <video controls playsinline preload="none" poster="assets/littlecat/video/little-cat-tour-poster.jpg" width="1080" height="1350" src="assets/littlecat/video/little-cat-tour.mp4" aria-label="A narrated tour of Little Cat"></video>
-</div></section>
 
 <section class="trust"><div class="wrap sec">
   <div class="grid">
