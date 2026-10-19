@@ -4,22 +4,26 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Little Cat — a gentle care diary for little ones · Ebor Labs</title>
-<meta name="description" content="A gentle care diary for little ones: seizures, sleep, feeds and medicines, shared between the people who look after them. Made by Ebor Labs; in private use, diaries by invitation.">
+<meta name="description" content="A gentle care diary for little ones: seizures, sleep, feeds and medicines, shared between the people who look after them. Made by Ebor Labs; installs from your browser on iPhone and Android.">
 <link rel="icon" href="assets/littlecat/icon-192.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Ebor Labs">
 <meta property="og:title" content="Little Cat — a gentle care diary for little ones">
-<meta property="og:description" content="Seizures, sleep, feeds and medicines, shared between the people who look after a little one. In private use; diaries by invitation.">
+<meta property="og:description" content="Seizures, sleep, feeds and medicines, shared between the people who look after a little one. Start a diary from your browser.">
 <meta property="og:url" content="https://eborlabs.com/little-cat.html">
 <meta property="og:image" content="https://eborlabs.com/assets/littlecat/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <style>
 /* Little Cat's page (Mo, 19 October 2026: "a page on eborlabs.com"; call to
-   action "register interest by email"; "AI help, not the opinion"). In the Ebor
+   action "register interest by email"; "AI help, not the opinion"). Opened to the public the
+   same day (Mo's decision, through the Little Cat session): "Start your diary",
+   with the email kept for questions, and the app's own loop; the narrated tour
+   waits for a re-cut ("tour later": its chapter 8 shows the paid AI letter-reading
+   as standard). AI help is a paid option, asked for by email. In the Ebor
    Labs style, so the same fonts, colours and pieces as index.html; Little Cat's
    own purple appears only in its picture. Wording held to the Little Cat brief
    (ChotiBilli docs/handoff-website.md): a care diary, never a medical device,
-   nothing that diagnoses, predicts or detects, sign-up closed. */
+   nothing that diagnoses, predicts or detects; no app store, no price. */
 @font-face{font-family:"Sora";font-style:normal;font-weight:100 800;font-display:swap;
   src:url("assets/fonts/sora-latin-ext.woff2") format("woff2");
   unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
@@ -59,7 +63,9 @@ h1 strong{font-weight:800;color:var(--sky)}
 .status{margin:22px 0 0;font-size:15px;color:var(--mist);max-width:52ch;animation:rise .8s .5s both}
 .status b{display:inline-block;margin-right:8px;padding:3px 10px;border-radius:999px;background:var(--privbg);color:var(--priv);font-size:13px;font-weight:600}
 .hero-pic{flex:0 1 380px;margin:0 auto;text-align:center}
-.hero-pic img{width:100%;max-width:380px;height:auto;filter:drop-shadow(0 30px 40px rgba(0,0,0,.35));animation:bob 6s ease-in-out infinite}
+.hero-pic .tile{display:block;width:100%;max-width:380px;margin:0 auto;aspect-ratio:1;border-radius:28px;background:#F2F3F7;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.35)}
+.hero-pic video{display:block;width:100%;height:100%;object-fit:cover}
+.talk .bt{display:flex;flex-wrap:wrap;gap:12px}
 
 .sec{padding-top:clamp(56px,8vw,104px);padding-bottom:clamp(56px,8vw,104px)}
 .h2{font-weight:200;font-size:clamp(2rem,4.4vw,3.4rem);letter-spacing:-.03em;margin:0}
@@ -104,11 +110,14 @@ footer p{margin:0;max-width:62ch}
       <p class="eyebrow"><img src="assets/littlecat/icon-192.png" alt="" width="40" height="40">Little Cat</p>
       <h1>A gentle care diary for <strong>little ones</strong>.</h1>
       <p class="lede">Seizures, sleep, feeds and medicines, shared between everyone who looks after a baby or young child, especially a child with epilepsy. Whatever one carer logs shows on the others' phones in seconds.</p>
-      <div class="btns"><a class="btn solid" href="mailto:littlecat@eborlabs.com?subject=Little%20Cat">Register interest</a><a class="btn line" href="#what">What it does</a></div>
-      <p class="status"><b>In private use</b>New diaries are by invitation only for now, so there is nothing to download yet.</p>
+      <div class="btns"><a class="btn solid" href="https://littlecat.eborlabs.com">Start your diary</a><a class="btn line" href="#what">What it does</a></div>
+      <p class="status">It installs from your browser: "Add to Home Screen" on iPhone, "Install app" on Android. No app store needed.</p>
     </div>
     <div class="hero-pic">
-      <picture><source srcset="assets/littlecat/cat.webp" type="image/webp"><img src="assets/littlecat/cat.png" alt="Little Cat's mascot: a sleepy purple clay cat" width="632" height="588"></picture>
+      <span class="tile"><video id="loop" autoplay muted loop playsinline preload="auto" poster="assets/littlecat/video/little-cat-loop-poster.jpg" width="1080" height="1080" aria-label="Little Cat's mascot, a sleepy purple clay cat, under a moon and twinkling stars">
+        <source src="assets/littlecat/video/little-cat-loop.webm" type="video/webm">
+        <source src="assets/littlecat/video/little-cat-loop.mp4" type="video/mp4">
+      </video></span>
     </div>
   </div>
 </section>
@@ -132,7 +141,7 @@ footer p{margin:0;max-width:62ch}
       <li>Read-only links for the care team that expire.</li>
       <li>Seizures per day, and trends with medicine changes marked.</li></ul></div>
     <div><h3>Help when you want it</h3><ul>
-      <li>Optional AI help, from Claude by Anthropic: reading a clinic letter or a medicine label, summaries, and a help chat.</li>
+      <li>AI help, from Claude by Anthropic, is available as a paid option: reading a clinic letter or a medicine label, summaries, a help chat and voice logging. Email <a href="mailto:littlecat@eborlabs.com?subject=Little%20Cat%20AI%20help">littlecat@eborlabs.com</a> to ask.</li>
       <li>Roles for a parent, a carer, view-only, and a nursery or childminder, who sees the last 24 hours and the emergency details only.</li></ul></div>
   </div>
 </section>
@@ -158,14 +167,21 @@ footer p{margin:0;max-width:62ch}
 <section class="talk"><div class="wrap sec">
   <div class="t">
     <h2 class="h2">Looking after a little one with <strong>epilepsy?</strong></h2>
-    <p>Little Cat is in private use while we make sure it is right. Email us if you would like to hear more.</p>
+    <p>Start a diary in a minute, from your browser. Questions? Email littlecat@eborlabs.com.</p>
   </div>
-  <a class="btn solid" href="mailto:littlecat@eborlabs.com?subject=Little%20Cat">littlecat@eborlabs.com</a>
+  <div class="bt"><a class="btn solid" href="https://littlecat.eborlabs.com">Start your diary</a><a class="btn line" style="color:#fff" href="mailto:littlecat@eborlabs.com?subject=Little%20Cat">Email us</a></div>
 </div></section>
 
 <footer><div class="wrap">
   <p>Little Cat is made by Ebor Labs Ltd · Registered in England and Wales, company number 17500836 · Registered office: Unit 13 Freeland Park Wareham Road, Lytchett Matravers, Poole, England, BH16 6FA</p>
   <p><a href="https://littlecat.eborlabs.com/privacy.html">Little Cat privacy policy</a> · <a href="privacy.html">Ebor Labs privacy notice</a> · No cookies, no analytics</p>
 </div></footer>
+<script>
+/* the loop stays still for anyone whose device asks for less motion */
+(function(){
+  var v = document.getElementById("loop");
+  if (v && window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) { v.removeAttribute("autoplay"); v.pause(); }
+})();
+</script>
 </body>
 </html>
