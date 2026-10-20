@@ -139,17 +139,10 @@ body.menu-on{overflow:hidden}
 .ledger p{margin:0 0 14px;font-size:12px;letter-spacing:.12em;color:#7FB6EA}
 .ledger div{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid rgba(255,255,255,.12);font-size:14px}
 .ledger span:first-child{color:#CFE3F7}.ledger .ok{color:#6FE0B0;font-weight:600}.ledger .warn{color:#F2C14E;font-weight:600}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px;padding:48px 0 0;border-top:1px solid var(--line)}
-.card{display:flex;flex-direction:column;gap:14px;background:#F4F7FA;border-radius:12px;padding:26px}
-.card h3{font-size:22px;font-weight:700;margin:0}
-.card h3 span{font-weight:200;color:#8DA2B8}
-.card p{margin:0;font-size:15px;color:var(--body)}
-.card .pill{align-self:flex-start}
 .art{height:120px;border-radius:8px;position:relative;overflow:hidden}
 .art i{position:absolute;animation:pulse 2.4s infinite}
 .art b{position:absolute;left:14px;bottom:12px;font-size:12px;font-weight:600;letter-spacing:.08em}
 .a1{background:#DDEBF7}.a1 b{color:var(--navy)}
-.a2{background:repeating-linear-gradient(0deg,#fff 0 23px,#E3E8EE 23px 24px),repeating-linear-gradient(90deg,#fff 0 23px,#E3E8EE 23px 24px)}.a2 b{color:#5B6D80}
 .a3{background:#3A2E5C}.a3 b{color:#fff}
 
 /* how we build, talk */
@@ -177,10 +170,33 @@ footer p{margin:0;max-width:62ch}
 .clips figure{margin:0}
 .clips video{display:block;width:100%;height:auto;aspect-ratio:16/9;border-radius:8px;background:var(--wash)}
 .clips figcaption{margin-top:8px;font-size:15px;color:var(--body)}
+/* Our tools, by sector (layout D3, 20 October 2026). Each sector is a real heading
+   with its icon in a pale blue tile; every tool, live or in development, gets the
+   same full-size row. The capitals are made by the style, not typed, so a screen
+   reader reads the word rather than spelling it. Icons and flags are drawn in the
+   page, so nothing loads from another site. */
+.i{width:20px;height:20px;stroke:var(--blue);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.fl{width:22px;height:11px;border-radius:2px;box-shadow:0 0 0 1px rgba(10,34,63,.25);flex:none}
+.flag{display:inline-flex;align-items:center;gap:6px}
+.top{display:flex;align-items:center;flex-wrap:wrap;gap:8px 18px}
+.where{display:inline-flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;font-weight:600;letter-spacing:.12em;color:#3D5068}
+.row h4{font-size:clamp(1.7rem,3vw,2.4rem);font-weight:700;letter-spacing:-.02em;margin:8px 0 10px}
+.div{display:flex;align-items:center;gap:16px;margin:80px 0 0;font-size:clamp(1.35rem,2.5vw,1.9rem);font-weight:700;letter-spacing:.1em;line-height:1.1;color:var(--navy);text-transform:uppercase}
+.div::after{content:"";flex:1;height:2px;background:var(--blue);opacity:.3}
+.div .tile{display:inline-flex;align-items:center;justify-content:center;width:1.75em;height:1.75em;border-radius:12px;background:#E6F0FA;flex:none}
+.div .tile .i{width:1.05em;height:1.05em;stroke-width:1.7}
+.div + .row{border-top:0;padding-top:28px}
+.pic .art.big,.pic .shot{width:100%;max-width:420px;height:clamp(200px,24vw,280px);border-radius:12px;box-shadow:0 0 0 1px #DDE3EA,0 24px 60px rgba(10,34,63,.12)}
+.pic .art.big b{font-size:13px;left:18px;bottom:16px}
+.pic picture{display:contents}
+.pic .shot{display:block;object-fit:cover;object-position:center}
+/* the Ebor Works render is drawn at 3:2, so it keeps that shape at every width rather than losing the phone at its edge */
+.pic .shot.whole{height:auto;aspect-ratio:3/2}
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="i-training" viewBox="0 0 24 24"><path d="M2.5 9.5 12 5l9.5 4.5L12 14z"/><path d="M6.5 11.8v4.4c0 1.5 2.5 3.1 5.5 3.1s5.5-1.6 5.5-3.1v-4.4"/><path d="M21.5 9.5v5.5"/></symbol><symbol id="i-finance" viewBox="0 0 24 24"><path d="M3 9.5 12 4l9 5.5"/><path d="M5.5 10.5v7M10 10.5v7M14 10.5v7M18.5 10.5v7"/><path d="M3 20h18"/></symbol><symbol id="i-construction" viewBox="0 0 24 24"><rect x="2.5" y="15" width="19" height="3.5" rx="1"/><path d="M4.5 15v-2.5A5.5 5.5 0 0 1 9.5 7"/><path d="M14.5 7a5.5 5.5 0 0 1 5 5.5V15"/><path d="M9.5 11.5V5.5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v6"/></symbol><symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10.2A4.2 4.2 0 0 1 12 7.3a4.2 4.2 0 0 1 7.5 2.5C19.5 15.4 12 20 12 20z"/></symbol><symbol id="i-gaming" viewBox="0 0 24 24"><path d="M7 8h10a4 4 0 0 1 4 3.6l.6 4.6a2.4 2.4 0 0 1-4.2 1.8L15.6 16H8.4l-1.8 2a2.4 2.4 0 0 1-4.2-1.8L3 11.6A4 4 0 0 1 7 8z"/><path d="M8 10.8v3.4M6.3 12.5h3.4"/><path d="M15.5 12v.01M17.6 13.6v.01"/></symbol><symbol id="f-uae" viewBox="0 0 24 12"><rect width="24" height="4" fill="#00732F"/><rect y="4" width="24" height="4" fill="#FFFFFF"/><rect y="8" width="24" height="4" fill="#000000"/><rect width="6" height="12" fill="#FF0000"/></symbol><symbol id="f-uk" viewBox="0 0 60 30"><clipPath id="uk-s"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="uk-t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(#uk-s)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#FFFFFF" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#uk-t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#FFFFFF" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></g></symbol></defs></svg>
 
 <section class="hero">
   <img class="bg" src="assets/mark.png" alt="">
@@ -256,12 +272,13 @@ footer p{margin:0;max-width:62ch}
 
 
 <section id="work" class="wrap sec">
-  <div class="head"><h2 class="h2">Already <strong>built</strong></h2><p>Our own tools: three live, three in development, and they say so</p></div>
+  <div class="head"><h2 class="h2">Our <strong>tools</strong></h2><p>Three live, three in development, and they say so</p></div>
 
+  <h3 class="div"><span class="tile"><svg class="i" aria-hidden="true"><use href="#i-training"/></svg></span>Training</h3>
   <div class="row">
     <div>
-      <span class="num">01</span>
-      <h3>Ebor Exam</h3>
+      <div class="top"><span class="num">01</span><span class="where"><span class="flag"><svg class="fl" aria-hidden="true"><use href="#f-uae" width="22" height="11"/></svg>UAE</span><span class="flag"><svg class="fl" aria-hidden="true"><use href="#f-uk" width="22" height="11"/></svg>UK</span></span></div>
+      <h4>Ebor Exam</h4>
       <p>Any exam or assessment, marked and certified. Candidates sit it on a laptop, tablet or phone, the server marks it, and every certificate can be checked against the record by anyone who scans it.</p>
       <div class="meta"><span class="pill live">Live</span><a class="go" href="https://exam.eborlabs.com">exam.eborlabs.com →</a></div>
     </div>
@@ -283,6 +300,7 @@ footer p{margin:0;max-width:62ch}
     </div>
   </div>
 
+  <h3 class="div"><span class="tile"><svg class="i" aria-hidden="true"><use href="#i-finance"/></svg></span>Finance</h3>
   <div class="row rev">
     <div class="pic"><div class="ledger">
       <p>CUSTOMER MASTER FILE · CHECKED IN YOUR BROWSER</p>
@@ -293,38 +311,52 @@ footer p{margin:0;max-width:62ch}
       <div><span>Customer 0005</span><span class="warn">Possible duplicate</span></div>
     </div></div>
     <div>
-      <span class="num">02</span>
-      <h3>E-invoicing data check</h3>
+      <div class="top"><span class="num">02</span><span class="where"><span class="flag"><svg class="fl" aria-hidden="true"><use href="#f-uae" width="22" height="11"/></svg>UAE</span></span></div>
+      <h4>E-invoicing data check</h4>
       <p>Gets UAE customer data ready for the Ministry of Finance e-invoicing programme, and checks invoice files against UBL and PINT AE. Runs entirely in your browser; nothing is uploaded.</p>
       <div class="meta"><span class="pill live">Live</span><a class="go" href="https://einvoicecheck.eborlabs.com">einvoicecheck.eborlabs.com →</a></div>
     </div>
   </div>
-
   <div class="row">
     <div>
-      <span class="num">03</span>
-      <h3>Little Cat</h3>
+      <div class="top"><span class="num">03</span><span class="where"><span class="flag"><svg class="fl" aria-hidden="true"><use href="#f-uae" width="22" height="11"/></svg>UAE</span></span></div>
+      <h4>Ebor</h4>
+      <p>A compliance workspace for UAE businesses: six tools on one platform, starting with anti-money-laundering checks and company files.</p>
+      <div class="meta"><span class="pill dev">In development</span></div>
+    </div>
+    <div class="pic"><div class="art big a1"><i style="left:18%;top:22%;width:46px;height:46px;border-radius:50%;background:#056EC8"></i><i style="left:48%;top:38%;width:30px;height:30px;border-radius:50%;background:#3B9BEA;animation-delay:.6s"></i><i style="left:72%;top:18%;width:22px;height:22px;border-radius:50%;background:#F2C14E;animation-delay:1.2s"></i><b>AML SCREENING</b></div></div>
+  </div>
+
+  <h3 class="div"><span class="tile"><svg class="i" aria-hidden="true"><use href="#i-construction"/></svg></span>Construction</h3>
+  <div class="row rev">
+    <div class="pic"><picture><source srcset="assets/ebor-works/ebor-works-render.webp" type="image/webp"><img class="shot whole" src="assets/ebor-works/ebor-works-render.jpg" alt="A small 3D model of one building floor with red, amber and green pins standing in the rooms, beside a phone" width="1680" height="1120" loading="lazy"></picture></div>
+    <div>
+      <span class="num">04</span>
+      <h4>Ebor Works</h4>
+      <p>Building inspections on a phone: snags with photos pinned to the floor plan, repairs verified, and a handover folder for the client.</p>
+      <div class="meta"><span class="pill dev">In development</span></div>
+    </div>
+  </div>
+
+  <h3 class="div"><span class="tile"><svg class="i" aria-hidden="true"><use href="#i-heart"/></svg></span>Health</h3>
+  <div class="row">
+    <div>
+      <span class="num">05</span>
+      <h4>Little Cat</h4>
       <p>A gentle care diary for little ones: seizures, sleep, feeds and medicines, shared between everyone who looks after a baby or young child, especially a child with epilepsy. Health advice from the NHS, with sources.</p>
       <div class="meta"><span class="pill live">Live</span><a class="go" href="https://littlecat.eborlabs.com">littlecat.eborlabs.com →</a><a class="go" href="little-cat.html">About Little Cat →</a></div>
     </div>
     <div class="pic"><picture><source srcset="assets/littlecat/cat.webp" type="image/webp"><img class="lc" src="assets/littlecat/cat.png" alt="Little Cat's mascot: a sleepy purple clay cat" width="632" height="588" loading="lazy"></picture></div>
   </div>
 
-  <div class="cards">
-    <div class="card">
-      <div class="art a1"><i style="left:18%;top:22%;width:46px;height:46px;border-radius:50%;background:#056EC8"></i><i style="left:48%;top:38%;width:30px;height:30px;border-radius:50%;background:#3B9BEA;animation-delay:.6s"></i><i style="left:72%;top:18%;width:22px;height:22px;border-radius:50%;background:#F2C14E;animation-delay:1.2s"></i><b>AML SCREENING</b></div>
-      <h3><span>04</span> Ebor</h3><span class="pill dev">In development</span>
-      <p>A compliance workspace for UAE businesses: six tools on one platform, starting with anti-money-laundering checks and company files.</p>
-    </div>
-    <div class="card">
-      <div class="art a2"><i style="left:24%;top:30%;width:14px;height:14px;border-radius:50% 50% 50% 0;background:#D64545"></i><i style="left:58%;top:52%;width:14px;height:14px;border-radius:50% 50% 50% 0;background:#D64545;animation-delay:.8s"></i><i style="left:76%;top:24%;width:14px;height:14px;border-radius:50% 50% 50% 0;background:#1F6F5C;animation-delay:1.6s"></i><b>FLOOR PLAN · LEVEL 2</b></div>
-      <h3><span>05</span> Ebor Works</h3><span class="pill dev">In development</span>
-      <p>Building inspections on a phone: snags with photos pinned to the floor plan, repairs verified, and a handover folder for the client.</p>
-    </div>
-    <div class="card">
-      <div class="art a3"><i style="left:70%;top:14%;width:26px;height:26px;border-radius:50%;background:#F2C14E"></i><i style="left:20%;top:30%;width:18px;height:20px;border-radius:50% 50% 45% 45%;background:#D64545;animation-delay:.9s"></i><b>YORK · AT DUSK</b></div>
-      <h3><span>06</span> Echoes of York</h3><span class="pill dev">In development</span>
+  <h3 class="div"><span class="tile"><svg class="i" aria-hidden="true"><use href="#i-gaming"/></svg></span>Gaming</h3>
+  <div class="row rev">
+    <div class="pic"><picture><source srcset="assets/echoes/shambles.webp" type="image/webp"><img class="shot" src="assets/echoes/shambles.jpg" alt="A chibi player in a flat cap walks their whippet down the cobbled Shambles in Echoes of York, past colourful overhanging shopfronts, hanging signs and bunting, with York Minster in the distance." width="1610" height="880" loading="lazy"></picture></div>
+    <div>
+      <span class="num">06</span>
+      <h4>Echoes of York</h4>
       <p>A storybook 3D game of the real city of York, to walk, cycle, balloon and row through.</p>
+      <div class="meta"><span class="pill dev">In development</span></div>
     </div>
   </div>
 </section>
