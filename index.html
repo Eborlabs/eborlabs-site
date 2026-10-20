@@ -143,7 +143,6 @@ body.menu-on{overflow:hidden}
 .art i{position:absolute;animation:pulse 2.4s infinite}
 .art b{position:absolute;left:14px;bottom:12px;font-size:12px;font-weight:600;letter-spacing:.08em}
 .a1{background:#DDEBF7}.a1 b{color:var(--navy)}
-.a2{background:repeating-linear-gradient(0deg,#fff 0 23px,#E3E8EE 23px 24px),repeating-linear-gradient(90deg,#fff 0 23px,#E3E8EE 23px 24px)}.a2 b{color:#5B6D80}
 .a3{background:#3A2E5C}.a3 b{color:#fff}
 
 /* how we build, talk */
@@ -191,6 +190,8 @@ footer p{margin:0;max-width:62ch}
 .pic .art.big b{font-size:13px;left:18px;bottom:16px}
 .pic picture{display:contents}
 .pic .shot{display:block;object-fit:cover;object-position:center}
+/* the Ebor Works render is drawn at 3:2, so it keeps that shape at every width rather than losing the phone at its edge */
+.pic .shot.whole{height:auto;aspect-ratio:3/2}
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -328,8 +329,7 @@ footer p{margin:0;max-width:62ch}
 
   <h3 class="div"><span class="tile"><svg class="i" aria-hidden="true"><use href="#i-construction"/></svg></span>Construction</h3>
   <div class="row rev">
-    <!-- ebor-works-render goes here -->
-    <div class="pic"><div class="art big a2"><i style="left:24%;top:30%;width:14px;height:14px;border-radius:50% 50% 50% 0;background:#D64545"></i><i style="left:58%;top:52%;width:14px;height:14px;border-radius:50% 50% 50% 0;background:#D64545;animation-delay:.8s"></i><i style="left:76%;top:24%;width:14px;height:14px;border-radius:50% 50% 50% 0;background:#1F6F5C;animation-delay:1.6s"></i><b>FLOOR PLAN · LEVEL 2</b></div></div>
+    <div class="pic"><picture><source srcset="assets/ebor-works/ebor-works-render.webp" type="image/webp"><img class="shot whole" src="assets/ebor-works/ebor-works-render.jpg" alt="A small 3D model of one building floor with red, amber and green pins standing in the rooms, beside a phone" width="1680" height="1120" loading="lazy"></picture></div>
     <div>
       <span class="num">04</span>
       <h4>Ebor Works</h4>
